@@ -16,42 +16,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4nb72wikdf#8t%7o^+1a2shdh%zmk#+w2pod672300c%=xy)h1'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
-
-
-
-
 ROOT_URLCONF = 'firweb.urls'
 
-
-
 WSGI_APPLICATION = 'firweb.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -68,15 +39,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'America/Chicago'
-
-USE_I18N = True
 
 USE_L10N = True
 
@@ -105,7 +70,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.media',
@@ -180,29 +144,6 @@ INSTALLED_APPS = [
     'djangocms_video',
     'firweb'
 ]
-
-LANGUAGES = (
-    ## Customize this
-    ('en', gettext('en')),
-)
-
-CMS_LANGUAGES = {
-    ## Customize this
-    1: [
-        {
-            'code': 'en',
-            'name': gettext('en'),
-            'redirect_on_fallback': True,
-            'public': True,
-            'hide_untranslated': False,
-        },
-    ],
-    'default': {
-        'redirect_on_fallback': True,
-        'public': True,
-        'hide_untranslated': False,
-    },
-}
 
 CMS_TEMPLATES = (
     ## Customize this
