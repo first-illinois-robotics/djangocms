@@ -23,3 +23,4 @@ six
 pytz
 
 git+https://github.com/loadimpact/django-saml2-auth.git@master#egg=django-saml2-auth
+django-webpack-loader

@@ -16,7 +16,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
+print(BASE_DIR)
 
 ALLOWED_HOSTS = []
 
@@ -47,6 +48,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+USE_I18N = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -58,14 +60,22 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'firweb', 'static'),
+    os.path.join(BASE_DIR, "../theme/build/"),
 )
+
+WEBPACK_LOADER = {
+    'MANIFEST_FILE': os.path.join(BASE_DIR, "../theme/build/manifest.json"),
+    'STATS_FILE': os.path.join(BASE_DIR, "../theme/webpack-stats.json"),
+    'BUNDLE_DIR_NAME': 'build/'
+}
+
 SITE_ID = 1
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'firweb', 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'firweb', 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -142,6 +152,7 @@ INSTALLED_APPS = [
     'djangocms_style',
     'djangocms_googlemap',
     'djangocms_video',
+    'webpack_loader',
     'firweb'
 ]
 
