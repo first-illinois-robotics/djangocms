@@ -14,8 +14,8 @@ jobs:
         run: pip install -Ur requirements.txt
 
       - name: Install Node Dependencies
-        working-directory: ./theme
         run: yarn install
+        working-directory: ./theme
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
