@@ -1,0 +1,29 @@
+on:
+  [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Python Lint
+        uses: reviewdog/action-black@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+      - name: SCSS/Style Lintblack
+        uses: reviewdog/action-stylelint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          stylelint_input: '**/*.scss'
+          reporter: github-pr-review
+          workdir: 'theme/'
+      - name: TypeScript Lint
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          workdir: 'theme/'

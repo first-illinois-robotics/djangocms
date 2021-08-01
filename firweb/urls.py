@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
     path("manager/", admin.site.urls),
-    path("", include("cms.urls"))
+    path("", include("cms.urls")),
 ]
 
 # This is only needed when using runserver.
