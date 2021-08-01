@@ -14,8 +14,9 @@ jobs:
         run: pip install -Ur requirements.txt
 
       - name: Install Node Dependencies
-        run: yarn install
-        working-directory: ./theme
+        run: |
+          cd theme
+          yarn install
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
@@ -25,3 +26,4 @@ jobs:
           eslint_dir: ./theme/ts/
           stylelint: true
           stylelint_dir: ./theme/sass/
+          auto_fix: true
