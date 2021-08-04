@@ -24,6 +24,7 @@ jobs:
           black: true
           eslint: true
           eslint_dir: ./theme/ts/
+          eslint_extensions: js,ts
           stylelint: true
           stylelint_dir: ./theme/sass/
           auto_fix: true
