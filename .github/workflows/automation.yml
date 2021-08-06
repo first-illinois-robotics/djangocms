@@ -13,7 +13,7 @@ jobs:
       - uses: Gr1N/setup-poetry@v7
 
       - name: Install Python Dependencies
-        run: poetry install && poetry shell
+        run: poetry install
 
       - name: Install Node Dependencies
         run: |
@@ -24,6 +24,7 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           black: true
+          black_command_prefix: poetry run
           eslint: true
           eslint_dir: ./theme/ts/
           eslint_extensions: js,ts
