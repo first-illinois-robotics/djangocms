@@ -10,8 +10,10 @@ jobs:
         with:
           python-version: '3.9'
 
+      - uses: Gr1N/setup-poetry@v7
+
       - name: Install Python Dependencies
-        run: pip install -Ur requirements.txt
+        run: poetry install && poetry shell
 
       - name: Install Node Dependencies
         run: |

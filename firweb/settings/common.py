@@ -155,7 +155,6 @@ INSTALLED_APPS = [
     "djangocms_style",
     "djangocms_googlemap",
     "djangocms_video",
-    "webpack_loader",
     "firweb",
 ]
 
@@ -190,3 +189,5 @@ THUMBNAIL_PROCESSORS = (
     "filer.thumbnail_processors.scale_and_crop_with_subject_location",
     "easy_thumbnails.processors.filters",
 )
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
