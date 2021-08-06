@@ -30,4 +30,4 @@ jobs:
           eslint_extensions: js,ts
           stylelint: true
           stylelint_dir: ./theme/sass/
-          auto_fix: true
+          auto_fix: false
