@@ -1,7 +1,7 @@
 const path = require('path');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPluginDjango = require("html-webpack-plugin-django");
 
 module.exports = {
     entry: {
@@ -27,6 +27,7 @@ module.exports = {
             filename: path.resolve(__dirname, '../firweb/templates/generated/frontend-base.html'),
             inject:false,
         }),
+        new HtmlWebpackPluginDjango({ bundlePath: "" }),
     ],
     resolve: {
         alias: {

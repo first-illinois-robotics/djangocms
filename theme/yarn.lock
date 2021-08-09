@@ -1501,6 +1501,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+django-static-webpack-plugin@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/django-static-webpack-plugin/-/django-static-webpack-plugin-1.0.0.tgz#5d7f81cee1c224961ab1c7096285e5610b853edf"
+  integrity sha512-EguEZ10mD6zxOmmytyFQtRhAXyUtwZ7fc2+SpJCLTQKj/3vHY0Rbq6V2VAWZggD5iHXxgwjXpRIW5WqJYTXwXA==
+
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -2405,6 +2410,14 @@ html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+
+html-webpack-plugin-django@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin-django/-/html-webpack-plugin-django-0.1.1.tgz#02b47ad51a47f9909b7a5dffc6dc6047ee02ebd4"
+  integrity sha512-qdZBApVk1DQ+fgwBWfnOUji//GBg7TFldFOqRtTqgy1YzWw8iRi6Z54C1cYtKaurdMUqQk1LvivaQsksOlxZPw==
+  dependencies:
+    html-webpack-plugin "^5.3.2"
+    webpack "^5.40.0"
 
 html-webpack-plugin@^5.3.2:
   version "5.3.2"
@@ -5327,7 +5340,7 @@ webpack-sources@^3.2.0:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.0.tgz#b16973bcf844ebcdb3afde32eda1c04d0b90f89d"
   integrity sha512-fahN08Et7P9trej8xz/Z7eRu8ltyiygEo/hnRi9KqBUs80KeDcnf96ZJo++ewWd84fEf3xSX9bp4ZS9hbw0OBw==
 
-webpack@^5.37.0:
+webpack@^5.37.0, webpack@^5.40.0:
   version "5.49.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.49.0.tgz#e250362b781a9fb614ba0a97ed67c66b9c5310cd"
   integrity sha512-XarsANVf28A7Q3KPxSnX80EkCcuOer5hTOEJWJNvbskOZ+EK3pobHarGHceyUZMxpsTHBHhlV7hiQyLZzGosYw==
