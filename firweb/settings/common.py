@@ -61,7 +61,7 @@ STATIC_ROOT = os.path.join(DATA_DIR, "static")
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "firweb", "static"),
-    os.path.join(BASE_DIR, "../theme/build/"),
+    os.path.join(BASE_DIR, "theme", "dist"),
 )
 
 WEBPACK_LOADER = {

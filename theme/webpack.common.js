@@ -1,9 +1,7 @@
-const Path = require('path');
+const path = require('path');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const WebpackAssetsManifest = require("webpack-assets-manifest");
-const BundleTracker = require('webpack-bundle-tracker');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -25,20 +23,18 @@ module.exports = {
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
-                { from: Path.resolve(__dirname, "./vendors"), to: "vendors" },
+                { from: path.resolve(__dirname, "./vendors"), to: "vendors" },
             ],
         }),
-        new WebpackAssetsManifest({
-            entrypoints: true,
-            output: "manifest.json",
-            writeToDisk: true,
-            publicPath: true,
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, './frontend_base.ejs'),
+            filename: path.resolve(__dirname, '../firweb/templates/generated/frontend-base.html'),
+            inject:false,
         }),
-        new BundleTracker({filename: './webpack-stats.json'})
     ],
     resolve: {
         alias: {
-            "~": Path.resolve(__dirname, "../src"),
+            "~": path.resolve(__dirname, "../src"),
         },
     },
     module: {
