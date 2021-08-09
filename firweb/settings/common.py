@@ -60,7 +60,7 @@ MEDIA_ROOT = os.path.join(DATA_DIR, "media")
 STATIC_ROOT = os.path.join(DATA_DIR, "static")
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "firweb", "static"),
+    # os.path.join(BASE_DIR, "firweb", "static"),
     os.path.join(BASE_DIR, "theme", "dist"),
 )
 
@@ -159,10 +159,7 @@ INSTALLED_APPS = [
 ]
 
 CMS_TEMPLATES = (
-    ## Customize this
     ("fullwidth.html", "Fullwidth"),
-    ("sidebar_left.html", "Sidebar Left"),
-    ("sidebar_right.html", "Sidebar Right"),
 )
 
 X_FRAME_OPTIONS = "SAMEORIGIN"

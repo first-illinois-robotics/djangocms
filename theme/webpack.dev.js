@@ -1,7 +1,6 @@
 const Path = require("path");
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const StylelintPlugin = require("stylelint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
@@ -12,9 +11,6 @@ module.exports = merge(common, {
         contentBase: './dist',
     },
     plugins: [
-        new StylelintPlugin({
-            files: Path.join("sass", "**/*.s?(a|c)ss"),
-        }),
         new MiniCssExtractPlugin({ filename: "css/[name].css" }),
     ],
     module: {

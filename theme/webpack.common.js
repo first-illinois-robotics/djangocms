@@ -8,9 +8,10 @@ module.exports = {
         'main': './ts/index.ts'
     },
     output: {
-        path: path.resolve('./assets/bundles/'),
+        path: path.resolve('./dist/'),
         filename: "[name]-[hash].js",
-        chunkFilename: "[name]-[hash].js"
+        chunkFilename: "[name]-[hash].js",
+        publicPath: "static/"
     },
     optimization: {
         splitChunks: {
@@ -21,11 +22,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, "./vendors"), to: "vendors" },
-            ],
-        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './frontend_base.ejs'),
             filename: path.resolve(__dirname, '../firweb/templates/generated/frontend-base.html'),

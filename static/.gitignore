@@ -1,0 +1,2 @@
+# this directory is just empty on commit
+# CI/CD will use `manage.py collectstatic` to pull in all of the static files from elsewhere into here
