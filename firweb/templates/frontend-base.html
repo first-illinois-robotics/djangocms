@@ -1,0 +1,16 @@
+{% load static cms_tags sekizai_tags %}
+{% include "generated/asset-tags.html" %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{% page_attribute "page_title" %}</title>
+        {% render_block "css" %}
+    </head>
+    <body>
+        {% cms_toolbar %}
+        {% block content %} {% endblock %}
+
+        
+        {% render_block "js" %}
+    </body>
+</html>
