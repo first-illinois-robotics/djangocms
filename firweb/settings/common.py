@@ -18,7 +18,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-print(BASE_DIR)
 
 ALLOWED_HOSTS = []
 
@@ -57,12 +56,9 @@ USE_I18N = False
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(DATA_DIR, "media")
-STATIC_ROOT = os.path.join(DATA_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATICFILES_DIRS = (
-    # os.path.join(BASE_DIR, "firweb", "static"),
-    os.path.join(BASE_DIR, "theme", "dist"),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "theme", "dist"),)
 
 WEBPACK_LOADER = {
     "MANIFEST_FILE": os.path.join(BASE_DIR, "../theme/build/manifest.json"),
@@ -158,9 +154,7 @@ INSTALLED_APPS = [
     "firweb",
 ]
 
-CMS_TEMPLATES = (
-    ("fullwidth.html", "Fullwidth"),
-)
+CMS_TEMPLATES = (("fullwidth.html", "Fullwidth"),)
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 

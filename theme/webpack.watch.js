@@ -1,31 +1,34 @@
+const Path = require("path");
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const path = require("path");
-const HtmlWebpackPluginDjango = require("html-webpack-plugin-django");
 
 module.exports = merge(common, {
-    mode: 'production',
-    devtool: "source-map",
-    bail: true,
+    target: "web",
+    mode: 'development',
+    devtool: "inline-cheap-source-map",
     output: {
-        filename: "js/[name].[chunkhash:8].js",
-        chunkFilename: "js/[name].[chunkhash:8].chunk.js",
-        publicPath: "static/"
+        publicPath: "http://localhost:9000/"
+    },
+    devServer: {
+        publicPath: "/",
+        contentBase: path.join(__dirname, 'dist'),
+        port: 9000,
+        writeToDisk: true,
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: "css/[name].[contenthash].css",
-        }),
+        new MiniCssExtractPlugin({ filename: "css/[name].css" }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './asset-tags.ejs'),
             filename: path.resolve(__dirname, '../firweb/templates/generated/asset-tags.html'),
+            cache: false,
             inject:false,
+            alwaysWriteToDisk: true
         }),
-        new HtmlWebpackPluginDjango({ bundlePath: "" }),
-        new CompressionPlugin()
+        new HtmlWebpackHarddiskPlugin()
     ],
     module: {
         rules: [
@@ -39,7 +42,6 @@ module.exports = merge(common, {
                 use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
-                    "postcss-loader",
                     "sass-loader",
                 ],
             },

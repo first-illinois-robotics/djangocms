@@ -1,0 +1,9 @@
+{% load sekizai_tags static %}
+
+{% addtoblock "css" %}
+    <%= htmlWebpackPlugin.tags.headTags %>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    <%= htmlWebpackPlugin.tags.bodyTags %>
+{% endaddtoblock %}

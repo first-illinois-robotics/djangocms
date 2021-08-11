@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "build_dev": "webpack --config webpack.dev.js",
-    "watch": "webpack --watch --config webpack.dev.js"
+    "watch": "webpack serve --config webpack.watch.js --hot"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +17,12 @@
     "@typescript-eslint/parser": "^4.28.5",
     "autoprefixer": "^10.2.5",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "compression-webpack-plugin": "^8.0.1",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
     "glob": "^7.1.7",
+    "html-webpack-harddisk-plugin": "^2.0.0",
     "html-webpack-plugin": "^5.3.2",
     "html-webpack-plugin-django": "^0.1.1",
     "mini-css-extract-plugin": "^2.2.0",

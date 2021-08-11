@@ -12,10 +12,7 @@ if FIR_ENV == "prod":
     from .prod import *
 elif FIR_ENV == "staging":
     from .staging import *
-elif FIR_ENV == "dev":
-    from .dev import *
 else:
-    print(
-        "Value of 'FIR_ENV' environment variable matches no valid patterns, assuming 'dev'"
-    )
+    INSTALLED_APPS += ("livereload",)
+    MIDDLEWARE += ['livereload.middleware.LiveReloadScript', ]
     from .dev import *

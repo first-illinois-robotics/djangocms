@@ -1,4 +1,5 @@
 project.db
+/static/
 
 # Django #
 *.log

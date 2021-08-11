@@ -9,31 +9,18 @@ module.exports = {
     },
     output: {
         path: path.resolve('./dist/'),
-        filename: "[name]-[hash].js",
-        chunkFilename: "[name]-[hash].js",
-        publicPath: "static/"
+        filename: "[name]-[chunkhash].js",
+        chunkFilename: "[name]-[chunkhash].js",
     },
     optimization: {
         splitChunks: {
             chunks: "all",
         },
-
         runtimeChunk: "single",
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './frontend_base.ejs'),
-            filename: path.resolve(__dirname, '../firweb/templates/generated/frontend-base.html'),
-            inject:false,
-        }),
-        new HtmlWebpackPluginDjango({ bundlePath: "" }),
     ],
-    resolve: {
-        alias: {
-            "~": path.resolve(__dirname, "../src"),
-        },
-    },
     module: {
         rules: [
             {

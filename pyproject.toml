@@ -28,9 +28,12 @@ html5lib = ">=1.0.1"
 Pillow = ">=3.0"
 six = "^1.16.0"
 pytz = "^2021.1"
+uvicorn = { version = "0.14", extras = ["standard"]}
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.7b0"
+django-livereload-server = "0.3.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
