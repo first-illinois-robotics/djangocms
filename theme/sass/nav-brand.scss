@@ -1,0 +1,24 @@
+.program-navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  list-style: none;
+
+  .container-lg {
+    .program-main-brand {
+      flex-grow: 1.5;
+    }
+    .program-brand {
+      flex-grow: 1;
+    }
+    .program-nav-box {
+      padding: 5px;
+      height: 150px;
+      margin-top: 10px;
+      line-height: 50px;
+      font-weight: bold;
+      font-size: 3em;
+      text-align: center;
+    }
+  }
+}

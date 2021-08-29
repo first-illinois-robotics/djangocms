@@ -4,13 +4,67 @@
 <html lang="en">
     <head>
         <title>{% page_attribute "page_title" %}</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         {% render_block "css" %}
     </head>
     <body>
         {% cms_toolbar %}
-        {% block content %} {% endblock %}
+        <nav class="nav navbar-expand-lg navbar-dark bg-dark">
+            <ul class="navbar-nav container-lg justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Coach Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Consent Form</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
+            </ul>
+        </nav>
 
-        
+        <nav class="program-navigation">
+            <ul class="container-lg">
+                <li class="program-main-brand program-nav-box">
+                    <a>
+                        <img src="" alt="FIRST Illinois Robotics">
+                    </a>
+                </li>
+                <li class="program-brand program-nav-box flld-brand">
+                    <a href="{# page_url "flld" #}" >
+                        <img src="" alt="FIRST LEGO League Discover">
+                    </a>
+                </li>
+                <li class="program-brand program-nav-box flle-brand">
+                    <a href="{# page_url "flld" #}" >
+                        <img src="" alt="FIRST LEGO League Explore">
+                    </a>
+                </li>
+                <li class="program-brand program-nav-box fllc-brand">
+                    <a href="{# page_url "flld" #}" >
+                        <img src="" alt="FIRST LEGO League Challenge">
+                    </a>
+                </li>
+                <li class="program-brand program-nav-box ftc-brand">
+                    <a href="{# page_url "flld" #}" >
+                        <img src="" alt="FIRST Tech Challenge">
+                    </a>
+                </li>
+                <li class="program-brand program-nav-box frc-brand">
+                    <a href="{# page_url "flld" #}" >
+                        <img src="" alt="FIRST Robotics Competition">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container-lg">
+            {% block content %} {% endblock %}
+        </div>
+
         {% render_block "js" %}
     </body>
 </html>

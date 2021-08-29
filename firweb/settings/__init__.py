@@ -12,6 +12,7 @@ if FIR_ENV == "prod":
 elif FIR_ENV == "staging":
     from .staging import *
 else:
-    INSTALLED_APPS += ("livereload",)
+    # INSTALLED_APPS += ("livereload",)
+    INSTALLED_APPS.insert(INSTALLED_APPS.index("django.contrib.staticfiles"), "livereload")
     MIDDLEWARE += ['livereload.middleware.LiveReloadScript', ]
     from .dev import *
