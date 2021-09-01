@@ -1,24 +1,48 @@
+@use "sass:math";
+@import "colors";
+
+$program-main-brand-width: 20%;
+$programs: 5; // NOT including main brand
+
 .program-navigation {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  list-style: none;
 
   .container-lg {
     .program-main-brand {
-      flex-grow: 1.5;
+      width: $program-main-brand-width;
     }
     .program-brand {
-      flex-grow: 1;
+      width: math.div(100 - $program-main-brand-width, $programs) - 1%;
     }
     .program-nav-box {
-      padding: 5px;
+      display: inline-block;
       height: 150px;
-      margin-top: 10px;
       line-height: 50px;
       font-weight: bold;
       font-size: 3em;
       text-align: center;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    .frc-brand {
+      background-color: $frc-blue;
+    }
+
+    .ftc-brand {
+      background-color: $ftc-orange;
+    }
+
+    .fllc-brand {
+      background-color: $fll-red;
+    }
+
+    .flle-brand {
+      background-color: $fll-green;
+    }
+
+    .flld-brand {
+      background-color: $fll-purple;
     }
   }
 }

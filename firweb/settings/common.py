@@ -58,7 +58,10 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(DATA_DIR, "media")
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "theme", "dist"),)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "theme", "dist"),
+    os.path.join(BASE_DIR, "firweb", "static")
+)
 
 WEBPACK_LOADER = {
     "MANIFEST_FILE": os.path.join(BASE_DIR, "../theme/build/manifest.json"),
