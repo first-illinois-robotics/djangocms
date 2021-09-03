@@ -1,27 +1,49 @@
 @use "sass:math";
 @import "colors";
 
-$program-main-brand-width: 20%;
+$program-main-brand-width: 25%;
 $programs: 5; // NOT including main brand
 
 .program-navigation {
+  background-color: $first-grey;
 
   .container-lg {
+    white-space: normal;
     .program-main-brand {
       width: $program-main-brand-width;
+      background-color: #bab8ba;
+
+        img {
+          width: 85%;
+          height: auto;
+        }
     }
     .program-brand {
-      width: math.div(100 - $program-main-brand-width, $programs) - 1%;
+      width: math.div(100 - $program-main-brand-width, $programs);
     }
     .program-nav-box {
       display: inline-block;
-      height: 150px;
+      height: 110px;
       line-height: 50px;
       font-weight: bold;
       font-size: 3em;
       text-align: center;
       margin: 0;
       padding: 0;
+      vertical-align: middle;
+
+
+        .fll-logo {
+          width: auto;
+          height: 100%;
+        }
+
+        .non-fll-logo {
+          display: inline;
+          width: 85%;
+          height: auto;
+          vertical-align: baseline;
+        }
 
     }
 
@@ -44,5 +66,27 @@ $programs: 5; // NOT including main brand
     .flld-brand {
       background-color: $fll-purple;
     }
+  }
+}
+
+.sub-program-nav {
+  &.frc-brand {
+    background-color: $frc-blue;
+  }
+
+  &.ftc-brand {
+    background-color: $ftc-orange;
+  }
+
+  &.fllc-brand {
+    background-color: $fll-red;
+  }
+
+  &.flle-brand {
+    background-color: $fll-green;
+  }
+
+  &.flld-brand {
+    background-color: $fll-purple;
   }
 }

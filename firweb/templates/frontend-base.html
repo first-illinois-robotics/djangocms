@@ -28,37 +28,34 @@
 
         <nav class="program-navigation">
             <div class="container-lg">
-                <div class="program-main-brand program-nav-box">
-                    <a>
-                        <img src="" alt="FIRST Illinois Robotics">
-                    </a>
-                </div>
-                <div class="program-brand program-nav-box flld-brand">
-                    <a href="{# page_url "flld" #}" >
-                        <img src="" alt="FIRST LEGO League Discover">
-                    </a>
-                </div>
-                <div class="program-brand program-nav-box flle-brand">
-                    <a href="{# page_url "flld" #}" >
-                        <img src="" alt="FIRST LEGO League Explore">
-                    </a>
-                </div>
-                <div class="program-brand program-nav-box fllc-brand">
-                    <a href="{# page_url "flld" #}" >
-                        <img src="" alt="FIRST LEGO League Challenge">
-                    </a>
-                </div>
-                <div class="program-brand program-nav-box ftc-brand">
-                    <a href="{# page_url "flld" #}" >
-                        <img src="" alt="FIRST Tech Challenge">
-                    </a>
-                </div>
-                <div class="program-brand program-nav-box frc-brand">
-                    <a href="{# page_url "flld" #}" >
-                        <img src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
-                    </a>
-                </div>
+                <a href="{% page_url "home" %}" class="program-main-brand program-nav-box">
+                        <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
+                </a><a href="#" class="program-brand program-nav-box flld-brand">
+                        <img class="fll-logo"  src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Discover">
+                </a><a href="{% page_url "fll-explore" %}" class="program-brand program-nav-box flle-brand">
+                        <img class="fll-logo"  src="{% static "FLL-RGB_Explore-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Explore">
+                </a><a href="{% page_url "fll-challenge" %}" class="program-brand program-nav-box fllc-brand">
+                        <img class="fll-logo"  src="{% static "FLL-RGB_Challenge-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Challenge">
+                </a><a href="{% page_url "ftc" %}" class="program-brand program-nav-box ftc-brand">
+                        <img class="non-fll-logo"  src="{% static "FIRSTTech_Type_White.png" %}" alt="FIRST Tech Challenge">
+                </a><a href="{% page_url "frc" %}" class="program-brand program-nav-box frc-brand">
+                        <img class="non-fll-logo"  src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
+                </a>
             </div>
+        </nav>
+
+        <nav class="nav navbar-expand-lg sub-program-nav navbar-dark fllc-brand">
+            <ul class="navbar-nav container-lg justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Coach Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Consent Form</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
+            </ul>
         </nav>
 
         <div class="container-lg">
