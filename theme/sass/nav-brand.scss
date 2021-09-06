@@ -1,4 +1,5 @@
 @use "sass:math";
+
 @import "colors";
 
 $program-main-brand-width: 25%;
@@ -9,18 +10,21 @@ $programs: 5; // NOT including main brand
 
   .container-lg {
     white-space: normal;
+
     .program-main-brand {
       width: $program-main-brand-width;
       background-color: #bab8ba;
 
-        img {
-          width: 85%;
-          height: auto;
-        }
+      img {
+        width: 85%;
+        height: auto;
+      }
     }
+
     .program-brand {
       width: math.div(100 - $program-main-brand-width, $programs);
     }
+
     .program-nav-box {
       display: inline-block;
       height: 110px;
@@ -32,19 +36,17 @@ $programs: 5; // NOT including main brand
       padding: 0;
       vertical-align: middle;
 
+      .fll-logo {
+        width: auto;
+        height: 100%;
+      }
 
-        .fll-logo {
-          width: auto;
-          height: 100%;
-        }
-
-        .non-fll-logo {
-          display: inline;
-          width: 85%;
-          height: auto;
-          vertical-align: baseline;
-        }
-
+      .non-fll-logo {
+        display: inline;
+        width: 85%;
+        height: auto;
+        vertical-align: baseline;
+      }
     }
 
     .frc-brand {

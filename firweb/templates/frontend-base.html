@@ -28,35 +28,48 @@
 
         <nav class="program-navigation">
             <div class="container-lg">
+                {% spaceless %}
                 <a href="{% page_url "home" %}" class="program-main-brand program-nav-box">
-                        <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
-                </a><a href="#" class="program-brand program-nav-box flld-brand">
-                        <img class="fll-logo"  src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Discover">
-                </a><a href="{% page_url "fll-explore" %}" class="program-brand program-nav-box flle-brand">
-                        <img class="fll-logo"  src="{% static "FLL-RGB_Explore-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Explore">
-                </a><a href="{% page_url "fll-challenge" %}" class="program-brand program-nav-box fllc-brand">
-                        <img class="fll-logo"  src="{% static "FLL-RGB_Challenge-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Challenge">
-                </a><a href="{% page_url "ftc" %}" class="program-brand program-nav-box ftc-brand">
-                        <img class="non-fll-logo"  src="{% static "FIRSTTech_Type_White.png" %}" alt="FIRST Tech Challenge">
-                </a><a href="{% page_url "frc" %}" class="program-brand program-nav-box frc-brand">
-                        <img class="non-fll-logo"  src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
+                    <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
                 </a>
+
+                <a href="#" class="program-brand program-nav-box flld-brand">
+                    <img class="fll-logo"  src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Discover">
+                </a>
+
+                <a href="{% page_url "fll-explore" %}" class="program-brand program-nav-box flle-brand">
+                    <img class="fll-logo"  src="{% static "FLL-RGB_Explore-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Explore">
+                </a>
+
+                <a href="{% page_url "fll-challenge" %}" class="program-brand program-nav-box fllc-brand">
+                    <img class="fll-logo"  src="{% static "FLL-RGB_Challenge-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Challenge">
+                </a>
+
+                <a href="{% page_url "ftc" %}" class="program-brand program-nav-box ftc-brand">
+                    <img class="non-fll-logo"  src="{% static "FIRSTTech_Type_White.png" %}" alt="FIRST Tech Challenge">
+                </a>
+
+                <a href="{% page_url "frc" %}" class="program-brand program-nav-box frc-brand">
+                    <img class="non-fll-logo"  src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
+                </a>
+                {% endspaceless %}
             </div>
         </nav>
 
-        <nav class="nav navbar-expand-lg sub-program-nav navbar-dark fllc-brand">
-            <ul class="navbar-nav container-lg justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Coach Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Consent Form</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Donate</a>
-                </li>
-            </ul>
-        </nav>
+{#        <nav class="nav navbar-expand-lg sub-program-nav navbar-dark fllc-brand">#}
+{#            <ul class="navbar-nav container-lg justify-content-end">#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Coach Login</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Consent Form</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Donate</a>#}
+{#                </li>#}
+{#            </ul>#}
+{#        </nav>#}
+        {% include "menus/navbar_wrap.html" %}
 
         <div class="container-lg">
             {% block content %} {% endblock %}
