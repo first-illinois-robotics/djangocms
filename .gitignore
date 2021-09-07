@@ -1,6 +1,9 @@
 project.db
 /static/
 
+# Dependencies are only edited through Poetry, they should not be checked in for a pip file
+requirements.txt
+
 # Django #
 *.log
 *.pot

@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - uses: Gr1N/setup-poetry@v7
+
+      - name: Install Python Dependencies
+        run: poetry install
+
+      - name: Install Node Dependencies
+        run: |
+          cd theme
+          yarn install
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          black: true
+          black_command_prefix: poetry run
+          eslint: true
+          eslint_dir: ./theme/ts/
+          eslint_extensions: js,ts
+          stylelint: true
+          stylelint_dir: ./theme/sass/
+          auto_fix: false
+
+  build:
+    runs-on: ubuntu-20.04
+    needs: lint
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - uses: Gr1N/setup-poetry@v7
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Install Python Dependencies
+        run: poetry install
+
+      - name: Export Python Dependencies
+        run: poetry export -o requirements.txt
+
+      - name: Install Node Dependencies
+        run: |
+          cd theme
+          yarn install
+
+      - name: Build Frontend
+        run: |
+          cd theme
+          yarn run build
+
+      - name: Collect Static
+        run: poetry run manage.py collectstatic
+
+
+
