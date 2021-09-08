@@ -69,7 +69,7 @@ jobs:
           yarn run build
 
       - name: Collect Static
-        run: poetry run manage.py collectstatic
+        run: poetry run python manage.py collectstatic
 
 
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "djangocms"
+name = "firweb"
 version = "0.1.0"
 description = "Website for FIRST Illinois Robotics"
 authors = ["Your Name <you@example.com>"]
@@ -30,6 +30,9 @@ six = "^1.16.0"
 pytz = "^2021.1"
 uvicorn = { version = "0.14", extras = ["standard"]}
 gunicorn = "^20.1.0"
+django-storages = { version = "^1.11.1", extras = ["google"]}
+django-environ = "^0.6"
+google-cloud-secret-manager = "2.7.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.7b0"

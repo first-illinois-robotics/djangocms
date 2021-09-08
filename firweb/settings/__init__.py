@@ -8,11 +8,9 @@ except KeyError:
 
 
 if FIR_ENV == "prod":
+    # both prod and staging use the same config, the secrets will just import from different projects
     from .prod import *
-elif FIR_ENV == "staging":
-    from .staging import *
 else:
-    # INSTALLED_APPS += ("livereload",)
     INSTALLED_APPS.insert(
         INSTALLED_APPS.index("django.contrib.staticfiles"), "livereload"
     )

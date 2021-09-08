@@ -63,12 +63,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "firweb", "static"),
 )
 
-WEBPACK_LOADER = {
-    "MANIFEST_FILE": os.path.join(BASE_DIR, "../theme/build/manifest.json"),
-    "STATS_FILE": os.path.join(BASE_DIR, "../theme/webpack-stats.json"),
-    "BUNDLE_DIR_NAME": "build/",
-}
-
 SITE_ID = 1
 
 
@@ -164,18 +158,6 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
-
-DATABASES = {
-    "default": {
-        "CONN_MAX_AGE": 0,
-        "ENGINE": "django.db.backends.sqlite3",
-        "HOST": "localhost",
-        "NAME": "project.db",
-        "PASSWORD": "",
-        "PORT": "",
-        "USER": "",
-    }
-}
 
 THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.colorspace",
