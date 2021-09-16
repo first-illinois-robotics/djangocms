@@ -1,5 +1,6 @@
 project.db
 /static/
+.env
 
 # Dependencies are only edited through Poetry, they should not be checked in for a pip file
 requirements.txt

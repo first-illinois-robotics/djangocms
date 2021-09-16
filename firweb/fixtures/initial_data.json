@@ -641,22 +641,6 @@
   },
   {
     "model": "cms.cmsplugin",
-    "pk": 1,
-    "fields": {
-      "path": "0001",
-      "depth": 1,
-      "numchild": 1,
-      "placeholder": 2,
-      "parent": null,
-      "position": 0,
-      "language": "en",
-      "plugin_type": "Bootstrap4AlertsPlugin",
-      "creation_date": "2021-08-09T21:33:46.239Z",
-      "changed_date": "2021-08-29T20:55:35.375Z"
-    }
-  },
-  {
-    "model": "cms.cmsplugin",
     "pk": 2,
     "fields": {
       "path": "00010001",
@@ -669,22 +653,6 @@
       "plugin_type": "TextPlugin",
       "creation_date": "2021-08-09T21:33:52.406Z",
       "changed_date": "2021-08-09T21:34:02.328Z"
-    }
-  },
-  {
-    "model": "cms.cmsplugin",
-    "pk": 16,
-    "fields": {
-      "path": "0002",
-      "depth": 1,
-      "numchild": 1,
-      "placeholder": 3,
-      "parent": null,
-      "position": 0,
-      "language": "en",
-      "plugin_type": "Bootstrap4AlertsPlugin",
-      "creation_date": "2021-08-09T21:33:46.239Z",
-      "changed_date": "2021-09-03T16:55:46.984Z"
     }
   },
   {
@@ -932,26 +900,6 @@
     "pk": 17,
     "fields": {
       "body": "<p>Site is not finished yet!</p>"
-    }
-  },
-  {
-    "model": "bootstrap4_alerts.bootstrap4alerts",
-    "pk": 1,
-    "fields": {
-      "alert_context": "warning",
-      "alert_dismissable": false,
-      "tag_type": "div",
-      "attributes": {}
-    }
-  },
-  {
-    "model": "bootstrap4_alerts.bootstrap4alerts",
-    "pk": 16,
-    "fields": {
-      "alert_context": "warning",
-      "alert_dismissable": false,
-      "tag_type": "div",
-      "attributes": {}
     }
   }
 ]
