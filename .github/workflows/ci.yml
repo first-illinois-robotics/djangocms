@@ -71,5 +71,20 @@ jobs:
       - name: Collect Static
         run: poetry run python manage.py collectstatic
 
+      - name: Connect to Cloud SQL Proxy
+        uses: mattes/gce-cloudsql-proxy-action@v1
+        with:
+          creds: ${{ secrets.GCP_SA_KEY }}
+          instance: ${{ secrets.GCP_DB_NAME }}
+
+      - name: Apply Database Migrations to Staging DB
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+          USE_CLOUD_SQL_AUTH_PROXY: true
+        run: poetry run python manage.py migrate
+
+      - name: Deploy Staging
+        uses: google-github-actions/deploy-appengine@main
+        if: ${{ github.ref == 'refs/heads/develop' }}
 
 

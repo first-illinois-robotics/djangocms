@@ -18,5 +18,10 @@ __pycache__/
 # Ignored by the build system
 /setup.cfg
 
-theme/
-venv/
+/theme/
+/venv/
+/docs/
+/.github/
+/.idea/
+/poetry.lock
+/pyproject.toml

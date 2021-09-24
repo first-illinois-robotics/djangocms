@@ -23,22 +23,24 @@ else:
 
 DEBUG = False
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 DATABASES = {
-    'default': env.db(),
+    "default": env.db(),
 }
 
 # temporary fix for django-environ bug
 # see https://github.com/joke2k/django-environ/issues/294
 if "/" in DATABASES["default"]["NAME"]:
-    DATABASES["default"]["HOST"], DATABASES["default"]["NAME"] = DATABASES["default"]["NAME"].rsplit('/', 1)
+    DATABASES["default"]["HOST"], DATABASES["default"]["NAME"] = DATABASES["default"][
+        "NAME"
+    ].rsplit("/", 1)
 
 if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
     DATABASES["default"]["HOST"] = "127.0.0.1"
     DATABASES["default"]["PORT"] = 5432
 
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = env.str("GS_BUCKET_NAME")
 
 # ONLY safe if deploying through GAE. If deploying elsewhere, this must be modified
