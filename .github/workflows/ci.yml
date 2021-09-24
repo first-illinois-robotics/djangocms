@@ -84,7 +84,7 @@ jobs:
         run: poetry install
 
       - name: Export Python Dependencies
-        run: poetry export -o requirements.txt
+        run: poetry export -o requirements.txt --without-hashes
 
       - name: Install Node Dependencies
         run: |
