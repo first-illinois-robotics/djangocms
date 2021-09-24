@@ -15,6 +15,7 @@ if os.path.isfile(env_file):
     env.read_env(env_file)
 else:
     client = secretmanager.SecretManagerServiceClient()
+    print(client.list_secrets())
     settings_name = os.environ.get("SETTINGS_NAME", "django_settings")
     name = f"projects/{project_id}/secrets/{settings_name}/versions/latest"
     payload = client.access_secret_version(name=name).payload.data.decode("UTF-8")
