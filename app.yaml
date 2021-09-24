@@ -1,8 +1,9 @@
 runtime: python39
-threadsafe: yes
 
 env_variables:
   FIR_ENV: "prod"
+
+entrypoint: gunicorn firweb.asgi:application -b :$PORT  -k uvicorn.workers.UvicornWorker
 
 automatic_scaling:
   min_instances: 0
@@ -14,5 +15,3 @@ handlers:
 
   - url: /.*
     script: auto
-    secure: always
-    redirect_http_response_code: 301
