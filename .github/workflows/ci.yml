@@ -45,13 +45,6 @@ jobs:
 
       - uses: Gr1N/setup-poetry@v7
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-
       - name: Install Python Dependencies
         run: poetry install
 
@@ -70,6 +63,13 @@ jobs:
 
       - name: Collect Static
         run: poetry run python manage.py collectstatic
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
 
       - name: Connect to Cloud SQL Proxy
         uses: mattes/gce-cloudsql-proxy-action@v1
