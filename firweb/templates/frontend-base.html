@@ -26,30 +26,30 @@
             </ul>
         </nav>
 
-        <nav class="program-navigation">
+        <nav class="program-navigation" id="main-program-navigation">
             <div class="container-lg">
                 {% spaceless %}
-                <a href="{% page_url "home" %}" class="program-main-brand program-nav-box">
+                <a href="{% page_url "home" %}" class="program-main-brand program-nav-box" id="home-logo">
                     <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
                 </a>
 
-                <a href="#" class="program-brand program-nav-box flld-brand">
+                <a href="#" class="program-brand program-nav-box flld-brand" id="flld-logo">
                     <img class="fll-logo"  src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Discover">
                 </a>
 
-                <a href="{% page_url "fll-explore" %}" class="program-brand program-nav-box flle-brand">
+                <a href="{% page_url "fll-explore" %}" class="program-brand program-nav-box flle-brand" id="flle-logo">
                     <img class="fll-logo"  src="{% static "FLL-RGB_Explore-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Explore">
                 </a>
 
-                <a href="{% page_url "fll-challenge" %}" class="program-brand program-nav-box fllc-brand">
+                <a href="{% page_url "fll-challenge" %}" class="program-brand program-nav-box fllc-brand" id="fllc-logo">
                     <img class="fll-logo"  src="{% static "FLL-RGB_Challenge-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Challenge">
                 </a>
 
-                <a href="{% page_url "ftc" %}" class="program-brand program-nav-box ftc-brand">
+                <a href="{% page_url "ftc" %}" class="program-brand program-nav-box ftc-brand" id="ftc-logo">
                     <img class="non-fll-logo"  src="{% static "FIRSTTech_Type_White.png" %}" alt="FIRST Tech Challenge">
                 </a>
 
-                <a href="{% page_url "frc" %}" class="program-brand program-nav-box frc-brand">
+                <a href="{% page_url "frc" %}" class="program-brand program-nav-box frc-brand" id="frc-logo">
                     <img class="non-fll-logo"  src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
                 </a>
                 {% endspaceless %}

@@ -14,10 +14,19 @@ $programs: 5; // NOT including main brand
     .program-main-brand {
       width: $program-main-brand-width;
       background-color: #bab8ba;
+      position: relative;
 
       img {
+        position: absolute;
         width: 85%;
         height: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        padding-bottom: 5px; // Propping up since the FIRST should be centered with the other logos, not the whole logo
+        // maybe change this to an em value?
       }
     }
 
@@ -35,17 +44,23 @@ $programs: 5; // NOT including main brand
       margin: 0;
       padding: 0;
       vertical-align: middle;
+      position: relative;
 
       .fll-logo {
         width: auto;
-        height: 100%;
+        height: 100%; // this is all good since the FLL logos include the spacing required anyway
       }
 
       .non-fll-logo {
-        display: inline;
-        width: 85%;
-        height: auto;
-        vertical-align: baseline;
+        position: absolute;
+        width: auto;
+        height: 60%; // height of both FTC and FRC kept similar instead of width
+        // FRC is slightly wider than FTC, this keeps them at the same scale
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
 
@@ -72,6 +87,14 @@ $programs: 5; // NOT including main brand
 }
 
 .sub-program-nav {
+  display: none; // all sub program nav hidden by default
+
+  &.current-program {
+    display: block; // server default selecting program
+    // this ensures the django template will show valid CSS even before JS loads
+    // this class is set inside navbar_wrap.html
+  }
+
   &.frc-brand {
     background-color: $frc-blue;
   }

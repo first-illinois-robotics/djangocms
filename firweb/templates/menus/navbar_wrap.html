@@ -1,9 +1,30 @@
 {% load menu_tags %}
-
-<nav class="navbar navbar-expand-lg sub-program-nav navbar-dark ftc-brand">
+<nav class="navbar navbar-expand-lg sub-program-nav navbar-dark flle-brand" id="flle-menu">
+    <div class="container-lg">
+        <ul class="navbar-nav mr-auto">
+            {% show_menu_below_id "fll-explore" 0 100 100 100 "menus/navbar.html" %}
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg sub-program-nav navbar-dark fllc-brand" id="fllc-menu">
+    <div class="container-lg">
+        <ul class="navbar-nav mr-auto">
+            {% show_menu_below_id "fll-challenge" 0 100 100 100 "menus/navbar.html" %}
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg sub-program-nav navbar-dark ftc-brand current-program" id="ftc-menu">
     <div class="container-lg">
         <ul class="navbar-nav mr-auto">
             {% show_menu_below_id "ftc" 0 100 100 100 "menus/navbar.html" %}
+        </ul>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg sub-program-nav navbar-dark frc-brand" id="frc-menu">
+    <div class="container-lg">
+        <ul class="navbar-nav mr-auto">
+            {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar.html" %}
         </ul>
     </div>
 </nav>
