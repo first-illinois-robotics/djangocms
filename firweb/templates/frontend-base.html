@@ -71,9 +71,8 @@
 {#        </nav>#}
         {% include "menus/navbar_wrap.html" %}
 
-        <div class="container-lg">
-            {% block content %} {% endblock %}
-        </div>
+
+        {% block content %} {% endblock %}
 
         {% render_block "js" %}
     </body>
