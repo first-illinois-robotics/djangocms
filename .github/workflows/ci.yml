@@ -116,7 +116,7 @@ jobs:
         env:
           GOOGLE_CLOUD_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           USE_CLOUD_SQL_AUTH_PROXY: true
-        run: poetry run python manage.py migrate
+        run: LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 poetry run python manage.py migrate
 
       - name: Deploy Staging
         uses: google-github-actions/deploy-appengine@main
