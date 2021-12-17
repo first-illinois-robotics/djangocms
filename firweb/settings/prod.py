@@ -54,6 +54,7 @@ if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
 
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = env.str("GS_BUCKET_NAME")
+GS_QUERYSTRING_AUTH = False
 
 # ONLY safe if deploying through GAE. If deploying elsewhere, this must be modified
 ALLOWED_HOSTS = ["*"]
