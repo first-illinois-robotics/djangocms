@@ -29,11 +29,11 @@
         <nav class="program-navigation" id="main-program-navigation">
             <div class="container-lg">
                 {% spaceless %}
-                <a href="{% page_url "home" %}" class="program-main-brand program-nav-box" id="home-logo">
+                <a href="{% page_url "home" %}" class="program-main-brand program-nav-box" id="main-logo">
                     <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
                 </a>
 
-                <a href="#" class="program-brand program-nav-box flld-brand" id="flld-logo">
+                <a href="{% page_url "fll-discover" %}" class="program-brand program-nav-box flld-brand" id="flld-logo">
                     <img class="fll-logo"  src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}" alt="FIRST LEGO League Discover">
                 </a>
 

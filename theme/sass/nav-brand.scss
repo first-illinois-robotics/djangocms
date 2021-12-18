@@ -3,7 +3,7 @@
 @import "colors";
 
 $program-main-brand-width: 25%;
-$programs: 5; // NOT including main brand
+$programs: 5; // NOT including main brand (used for splitting up programs evenly width wise)
 
 .program-navigation {
   background-color: $first-grey;
@@ -113,5 +113,9 @@ $programs: 5; // NOT including main brand
 
   &.flld-brand {
     background-color: $fll-purple;
+  }
+
+  &.home-brand {
+    background-color: #bab8ba;
   }
 }
