@@ -56,5 +56,7 @@ DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = env.str("GS_BUCKET_NAME")
 GS_QUERYSTRING_AUTH = False
 
+DJANGOCMS_GOOGLEMAP_API_KEY = env.str("GMAPS_API")
+
 # ONLY safe if deploying through GAE. If deploying elsewhere, this must be modified
 ALLOWED_HOSTS = ["*"]
