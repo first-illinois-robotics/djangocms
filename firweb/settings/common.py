@@ -175,13 +175,20 @@ THUMBNAIL_PROCESSORS = (
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.abspath("/tmp/whoosh/"),
+    "default": {
+        "ENGINE": "haystack.backends.whoosh_backend.WhooshEngine",
+        "PATH": os.path.abspath("/tmp/whoosh/"),
     },
 }
 
 
 # allow iframes in text fields
-TEXT_ADDITIONAL_TAGS = ('iframe',)
-TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')
+TEXT_ADDITIONAL_TAGS = ("iframe",)
+TEXT_ADDITIONAL_ATTRIBUTES = (
+    "scrolling",
+    "allowfullscreen",
+    "frameborder",
+    "src",
+    "height",
+    "width",
+)
