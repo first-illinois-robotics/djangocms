@@ -126,6 +126,11 @@ INSTALLED_APPS = [
     "djangocms_text_ckeditor",
     "filer",
     "easy_thumbnails",
+    "haystack",
+    "aldryn_common",
+    "aldryn_search",
+    "standard_form",
+    "spurl",
     "djangocms_bootstrap5",
     "djangocms_bootstrap5.contrib.bootstrap5_alerts",
     "djangocms_bootstrap5.contrib.bootstrap5_badge",
@@ -166,4 +171,17 @@ THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.filters",
 )
 
+# fix for pre django3.2 models
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.abspath("/tmp/whoosh/"),
+    },
+}
+
+
+# allow iframes in text fields
+TEXT_ADDITIONAL_TAGS = ('iframe',)
+TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')

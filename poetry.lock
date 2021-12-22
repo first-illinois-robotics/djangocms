@@ -1,4 +1,53 @@
 [[package]]
+name = "aldryn-boilerplates"
+version = "0.8.0"
+description = "An extension that allows re-usable apps to provide sets of templates and staticfiles for different boilerplates."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.11"
+django-appconf = "*"
+YURL = ">=0.13"
+
+[[package]]
+name = "aldryn-common"
+version = "1.0.5"
+description = "Common utilities"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+aldryn-boilerplates = "*"
+django-sortedm2m = "*"
+six = "*"
+
+[[package]]
+name = "aldryn-search"
+version = "1.1.0"
+description = "An extension to django CMS to provide multilingual Haystack indexes"
+category = "main"
+optional = false
+python-versions = "*"
+develop = false
+
+[package.dependencies]
+django-appconf = "*"
+django-cms = ">=3.4.5"
+django-haystack = ">=2.0.0"
+django-spurl = "*"
+django-standard-form = "*"
+lxml = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/benzkji/aldryn-search.git"
+reference = "0a52d4c"
+resolved_reference = "0a52d4c0adc1bf5d163df28c785556e60fcdadfb"
+
+[[package]]
 name = "asgiref"
 version = "3.4.1"
 description = "ASGI specs, helper code, and adapters"
@@ -130,6 +179,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-appconf"
+version = "1.0.5"
+description = "A helper class for handling configuration defaults of packaged apps gracefully."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = "*"
+
+[[package]]
 name = "django-classy-tags"
 version = "2.0.0"
 description = "Class based template tags for Django"
@@ -196,6 +256,20 @@ python-versions = ">=3.6"
 Django = ">=2.2"
 
 [[package]]
+name = "django-haystack"
+version = "3.1.1"
+description = "Pluggable search for Django."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[package.extras]
+elasticsearch = ["elasticsearch (>=5,<6)"]
+
+[[package]]
 name = "django-js-asset"
 version = "1.2.2"
 description = "script tag with additional attributes for django.forms.Media"
@@ -253,6 +327,42 @@ python-versions = "*"
 [package.dependencies]
 django = ">=2.2"
 django-classy-tags = ">=1"
+
+[[package]]
+name = "django-sortedm2m"
+version = "3.1.1"
+description = "Drop-in replacement for Django's many to many field with sorted relations."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django-spurl"
+version = "0.6.8"
+description = "A Django template library for manipulating URLs."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+urlobject = ">=2.4.0"
+
+[package.extras]
+develop = ["tox", "django", "nose"]
+test = ["coverage", "nose"]
+
+[[package]]
+name = "django-standard-form"
+version = "1.1.1"
+description = "Quick and simple django templatetags for displaying forms."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.3"
+django-classy-tags = ">=0.3.3"
 
 [[package]]
 name = "django-storages"
@@ -1028,6 +1138,14 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
+name = "urlobject"
+version = "2.4.3"
+description = "A utility class for manipulating URLs."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "uvicorn"
 version = "0.16.0"
 description = "The lightning-fast ASGI server."
@@ -1087,12 +1205,35 @@ category = "main"
 optional = false
 python-versions = ">=3.7"
 
+[[package]]
+name = "whoosh"
+version = "2.7.4"
+description = "Fast, pure-Python full text indexing, search, and spell checking library."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "yurl"
+version = "1.0.0"
+description = "Yurl is alternative url manipulation library"
+category = "main"
+optional = false
+python-versions = "*"
+
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <4"
-content-hash = "f03e198395a1c1970d641a832f7a8b1c427cf5b8b7f737c56a9a539fcc2323b7"
+content-hash = "fc4b1136f6a5bba3ef8c6ce574764e3706fd1e3151f57e45f1747cdc55688f6d"
 
 [metadata.files]
+aldryn-boilerplates = [
+    {file = "aldryn-boilerplates-0.8.0.tar.gz", hash = "sha256:9ba59810ff9de12125226f4ee6586c3bae7cab19e979bbece3876a123b4c03ca"},
+]
+aldryn-common = [
+    {file = "aldryn-common-1.0.5.tar.gz", hash = "sha256:25c4eb3daccd594f7fabc7c43ff1e11c9ce2e50c13aa00e3e0d2a2f84558b29a"},
+]
+aldryn-search = []
 asgiref = [
     {file = "asgiref-3.4.1-py3-none-any.whl", hash = "sha256:ffc141aa908e6f175673e7b1b3b7af4fdb0ecb738fc5c8b88f69f055c2415214"},
     {file = "asgiref-3.4.1.tar.gz", hash = "sha256:4ef1ab46b484e3c706329cedeff284a5d40824200638503f5768edb6de7d58e9"},
@@ -1133,6 +1274,10 @@ django = [
     {file = "Django-3.2.10-py3-none-any.whl", hash = "sha256:df6f5eb3c797b27c096d61494507b7634526d4ce8d7c8ca1e57a4fb19c0738a3"},
     {file = "Django-3.2.10.tar.gz", hash = "sha256:074e8818b4b40acdc2369e67dcd6555d558329785408dcd25340ee98f1f1d5c4"},
 ]
+django-appconf = [
+    {file = "django-appconf-1.0.5.tar.gz", hash = "sha256:be3db0be6c81fa84742000b89a81c016d70ae66a7ccb620cdef592b1f1a6aaa4"},
+    {file = "django_appconf-1.0.5-py3-none-any.whl", hash = "sha256:ae9f864ee1958c815a965ed63b3fba4874eec13de10236ba063a788f9a17389d"},
+]
 django-classy-tags = [
     {file = "django-classy-tags-2.0.0.tar.gz", hash = "sha256:d59d98bdf96a764dcf7a2929a86439d023b283a9152492811c7e44fc47555bc9"},
     {file = "django_classy_tags-2.0.0-py3-none-any.whl", hash = "sha256:25eb4f95afee396148683bfb4811b83b3f5729218d73ad0a3399271a6f9fcc49"},
@@ -1151,6 +1296,10 @@ django-filer = [
 django-formtools = [
     {file = "django-formtools-2.3.tar.gz", hash = "sha256:9663b6eca64777b68d6d4142efad8597fe9a685924673b25aa8a1dcff4db00c3"},
     {file = "django_formtools-2.3-py3-none-any.whl", hash = "sha256:4699937e19ee041d803943714fe0c1c7ad4cab802600eb64bbf4cdd0a1bfe7d9"},
+]
+django-haystack = [
+    {file = "django-haystack-3.1.1.tar.gz", hash = "sha256:6d05756b95d7d5ec1dbd4668eb999ced1504b47f588e2e54be53b1404c516a82"},
+    {file = "django_haystack-3.1.1-py3-none-any.whl", hash = "sha256:970ebc6362f3f84861209154ec34b57f3e87d2d7922f948df80177f0e2e3ced7"},
 ]
 django-js-asset = [
     {file = "django-js-asset-1.2.2.tar.gz", hash = "sha256:c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260"},
@@ -1171,6 +1320,17 @@ django-polymorphic = [
 django-sekizai = [
     {file = "django-sekizai-2.0.0.tar.gz", hash = "sha256:e829f09b0d6bf01ee5cde05de1fb3faf2fbc5df66dc4dc280fbaac224ca4336f"},
     {file = "django_sekizai-2.0.0-py3-none-any.whl", hash = "sha256:5c5e16845d37ce822fc655ce79ec02715191b3d03330b550997bcb842cf24fdf"},
+]
+django-sortedm2m = [
+    {file = "django-sortedm2m-3.1.1.tar.gz", hash = "sha256:136f3d4e0820b351608a7141d88ac3ba7fafcd37a9b8361ad00ffe616a790be5"},
+    {file = "django_sortedm2m-3.1.1-py2.py3-none-any.whl", hash = "sha256:c67ae0757e8e60ded15a9ba04d0862fe39fba3d5b865899c2472166ff0050f2c"},
+]
+django-spurl = [
+    {file = "django-spurl-0.6.8.tar.gz", hash = "sha256:a282ae3bcee523a28df1f4b33111c8e5ee4e14ac6104657d34823d9b2800d200"},
+    {file = "django_spurl-0.6.8-py3-none-any.whl", hash = "sha256:b3952752b90f78c67c69b9e57982101785d09db417cc6bc308f7b5985198c88a"},
+]
+django-standard-form = [
+    {file = "django-standard-form-1.1.1.tar.gz", hash = "sha256:33d338e891ecf47ce2c6c892261ec2d62ae763c6b65a216e04edd9e69ccce3e4"},
 ]
 django-storages = [
     {file = "django-storages-1.12.3.tar.gz", hash = "sha256:a475edb2f0f04c4f7e548919a751ecd50117270833956ed5bd585c0575d2a5e7"},
@@ -1771,6 +1931,9 @@ urllib3 = [
     {file = "urllib3-1.26.7-py2.py3-none-any.whl", hash = "sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844"},
     {file = "urllib3-1.26.7.tar.gz", hash = "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"},
 ]
+urlobject = [
+    {file = "URLObject-2.4.3.tar.gz", hash = "sha256:47b2e20e6ab9c8366b2f4a3566b6ff4053025dad311c4bb71279bbcfa2430caa"},
+]
 uvicorn = [
     {file = "uvicorn-0.16.0-py3-none-any.whl", hash = "sha256:d8c839231f270adaa6d338d525e2652a0b4a5f4c2430b5c4ef6ae4d11776b0d2"},
     {file = "uvicorn-0.16.0.tar.gz", hash = "sha256:eacb66afa65e0648fcbce5e746b135d09722231ffffc61883d4fac2b62fbea8d"},
@@ -1850,4 +2013,12 @@ websockets = [
     {file = "websockets-10.1-pp37-pypy37_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:816ae7dac2c6522cfa620947ead0ca95ac654916eebf515c94d7c28de5601a6e"},
     {file = "websockets-10.1-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:1dafe98698ece09b8ccba81b910643ff37198e43521d977be76caf37709cf62b"},
     {file = "websockets-10.1.tar.gz", hash = "sha256:181d2b25de5a437b36aefedaf006ecb6fa3aa1328ec0236cdde15f32f9d3ff6d"},
+]
+whoosh = [
+    {file = "Whoosh-2.7.4-py2.py3-none-any.whl", hash = "sha256:aa39c3c3426e3fd107dcb4bde64ca1e276a65a889d9085a6e4b54ba82420a852"},
+    {file = "Whoosh-2.7.4.tar.gz", hash = "sha256:7ca5633dbfa9e0e0fa400d3151a8a0c4bec53bd2ecedc0a67705b17565c31a83"},
+    {file = "Whoosh-2.7.4.zip", hash = "sha256:e0857375f63e9041e03fedd5b7541f97cf78917ac1b6b06c1fcc9b45375dda69"},
+]
+yurl = [
+    {file = "YURL-1.0.0.tar.gz", hash = "sha256:1b9497efc0b4f85af9e5d139fb3e93fca825bccf2c62d463aca489630a248619"},
 ]
