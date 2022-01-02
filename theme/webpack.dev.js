@@ -9,22 +9,8 @@ module.exports = merge(common, {
     target: "web",
     mode: 'development',
     devtool: "inline-cheap-source-map",
-    plugins: [
-        new MiniCssExtractPlugin({ filename: "css/[name].css" }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './asset-tags.ejs'),
-            filename: path.resolve(__dirname, '../firweb/templates/generated/asset-tags.html'),
-            inject:false,
-        }),
-        new HtmlWebpackPluginDjango({ bundlePath: "" }),
-    ],
     module: {
         rules: [
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: "ts-loader",
-            },
             {
                 test: /\.s?css/i,
                 use: [
