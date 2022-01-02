@@ -30,7 +30,7 @@ module.exports = {
             inject:false,
             alwaysWriteToDisk: true,
         }),
-        // new HtmlWebpackPluginDjango({ bundlePath: "" }),
+        new HtmlWebpackPluginDjango({ bundlePath: "" }),
         new CleanWebpackPlugin(),
     ],
     module: {
