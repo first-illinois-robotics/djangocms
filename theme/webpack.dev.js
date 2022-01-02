@@ -9,6 +9,9 @@ module.exports = merge(common, {
     target: "web",
     mode: 'development',
     devtool: "inline-cheap-source-map",
+    output: {
+        publicPath: "/static/"
+    },
     module: {
         rules: [
             {

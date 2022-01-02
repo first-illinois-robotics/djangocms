@@ -29,7 +29,6 @@ module.exports = {
             cache: false,
             inject:false,
             alwaysWriteToDisk: true,
-            publicPath: "static/"
         }),
         // new HtmlWebpackPluginDjango({ bundlePath: "" }),
         new CleanWebpackPlugin(),
