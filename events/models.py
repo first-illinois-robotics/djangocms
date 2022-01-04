@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Competition(models.TextChoices):
-    UNKNOWN = 'UK', "Unknown"
+    UNKNOWN = "UK", "Unknown"
     FRC = "FRC", "FIRST Robotics Competition"
     FTC = "FTC", "FIRST Tech Challenge"
     FLLC = "FLLC", "FIRST LEGO League Challenge"
@@ -13,17 +13,23 @@ class Competition(models.TextChoices):
 class Team(models.Model):
     # This does NOT store team information, just simply a class for everything else to point to
     # You're likely looking for TeamYear down below
-    competition = models.IntegerField(choices=Competition.choices, default=Competition.UNKNOWN)
+    competition = models.IntegerField(
+        choices=Competition.choices, default=Competition.UNKNOWN
+    )
     team_num = models.IntegerField(null=True)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['team_num', 'competition'], name="unique_team")
+            models.UniqueConstraint(
+                fields=["team_num", "competition"], name="unique_team"
+            )
         ]
 
 
 class Season(models.Model):
-    competition = models.IntegerField(choices=Competition.choices(), default=Competition.UNKNOWN)
+    competition = models.IntegerField(
+        choices=Competition.choices, default=Competition.UNKNOWN
+    )
     # this year is the same one provided by {FRC/FTC}-Events and/or ES02.
     # May not be exactly the year, since seasons span years
     year = models.IntegerField(null=True)
@@ -33,7 +39,9 @@ class Season(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['year', 'competition'], name="unique_season")
+            models.UniqueConstraint(
+                fields=["year", "competition"], name="unique_season"
+            )
         ]
 
 
@@ -42,13 +50,13 @@ class League(models.Model):
     name = models.TextField()
     location = models.TextField()
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
-    parentLeague = models.ForeignKey('self', on_delete=models.CASCADE)
+    parentLeague = models.ForeignKey("self", on_delete=models.CASCADE)
 
 
 class TeamYear(models.Model):
     team = models.ForeignKey(Team, on_delete=models.PROTECT)
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
-    leagues = models.ManyToManyField(League, on_delete=models.PROTECT, null=True)
+    leagues = models.ManyToManyField(League)
 
     nickname = models.TextField(max_length=100, null=True)
     fullname = models.TextField()
@@ -62,7 +70,7 @@ class TeamYear(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['team', 'competition'], name="unique_team")
+            models.UniqueConstraint(fields=["team", "season"], name="unique_team_year")
         ]
 
 
@@ -107,4 +115,4 @@ class Event(models.Model):
     end_date = models.DateField()
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)
-    teams = models.ManyToManyField(Team)
+    teams = models.ManyToManyField(TeamYear)

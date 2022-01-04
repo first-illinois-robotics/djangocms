@@ -41,11 +41,22 @@ google-cloud-logging = "^2.7.0"
 aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0a52d4c"  }
 Whoosh = "^2.7.4"
 aldryn-common = "^1.0.5"
+requests = "^2.27.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.7b0"
 django-livereload-server = "0.4"
+mypy = "^0.930"
+django-stubs = "^1.9.0"
+types-requests = "^2.26.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+exclude = "migrations.*"
+
+[tool.django-stubs]
+django_settings_module = "firweb.settings"

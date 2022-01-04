@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from haystack.management.commands import update_index
+from haystack.management.commands import update_index  # type: ignore
 
 
 def handle_startup(request):

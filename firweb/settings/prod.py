@@ -1,8 +1,10 @@
 import os
 import io
 
-import environ
+import environ  # type: ignore
 from google.cloud import secretmanager
+from google.cloud.secretmanager_v1 import SecretManagerServiceClient
+
 from .common import BASE_DIR
 
 # Imports the Cloud Logging client library
@@ -26,10 +28,12 @@ if os.path.isfile(env_file):
     # Use a local secret file, if provided
     env.read_env(env_file)
 else:
-    client = secretmanager.SecretManagerServiceClient()
+    secret_client = secretmanager.SecretManagerServiceClient()
     settings_name = os.environ.get("SETTINGS_NAME", "django_settings")
     name = f"projects/{project_id}/secrets/{settings_name}/versions/latest"
-    payload = client.access_secret_version(name=name).payload.data.decode("UTF-8")
+    payload = secret_client.access_secret_version(name=name).payload.data.decode(
+        "UTF-8"
+    )
 
     env.read_env(io.StringIO(payload))
 

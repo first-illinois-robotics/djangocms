@@ -1,4 +1,6 @@
 import os  # isort:skip
+from tokenize import String
+from typing import List
 
 gettext = lambda s: s
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -19,7 +21,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: List[str] = []
 
 ROOT_URLCONF = "firweb.urls"
 
@@ -154,6 +156,7 @@ INSTALLED_APPS = [
     "djangocms_googlemap",
     "djangocms_video",
     "firweb",
+    "events",
 ]
 
 CMS_TEMPLATES = (("fullwidth.html", "Fullwidth"),)
@@ -161,8 +164,6 @@ CMS_TEMPLATES = (("fullwidth.html", "Fullwidth"),)
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 CMS_PERMISSION = True
-
-CMS_PLACEHOLDER_CONF = {}
 
 THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.colorspace",

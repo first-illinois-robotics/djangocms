@@ -45,6 +45,8 @@ jobs:
         with:
           black: true
           black_command_prefix: poetry run
+          mypy: true
+          mypy_command_prefix: poetry run
           eslint: true
           eslint_dir: ./theme/ts/
           eslint_extensions: js,ts
