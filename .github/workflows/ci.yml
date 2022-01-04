@@ -52,7 +52,7 @@ jobs:
           stylelint_dir: ./theme/sass/
           auto_fix: false
 
-  build:
+  deploy:
     runs-on: ubuntu-20.04
     needs: lint
     steps:
@@ -122,4 +122,13 @@ jobs:
         uses: google-github-actions/deploy-appengine@main
         if: ${{ github.ref == 'refs/heads/develop' }}
 
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
 

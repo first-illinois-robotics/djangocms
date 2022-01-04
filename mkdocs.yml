@@ -1,0 +1,17 @@
+site_name: FIRST Illinois Robotics
+repo_url: https://github.com/first-illinois-robotics/firweb
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+  icon:
+    repo: fontawesome/brands/github-square
