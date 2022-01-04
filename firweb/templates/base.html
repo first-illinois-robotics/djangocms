@@ -15,13 +15,13 @@
         <nav class="nav navbar-expand-lg navbar-dark bg-dark">
             <ul class="navbar-nav container-lg justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Coach Login</a>
+                    <a class="nav-link" href="http://registration.firstillinoisrobotics.org/Login.aspx">Coach Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Consent Form</a>
+                    <a class="nav-link" href="https://registration.firstillinoisrobotics.org/Consent.aspx?ConsentID=0&TeamID=0">Consent Form</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Donate</a>
+                    <a class="nav-link" href="{% page_url "donate" %}">Donate</a>
                 </li>
             </ul>
         </nav>
@@ -74,6 +74,81 @@
 
         {% block content %} {% endblock %}
 
+        <div class="container">
+          <footer class="py-5">
+
+            <div class="row justify-content-between py-4 my-4 border-top">
+              <div class="col-3">
+                <h5>Contact Us</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="mailto:contact@firstillinoisrobotics.org" class="nav-link p-0 text-muted"><i class="far fa-envelope"></i> <i>FIRST</i> Illinois Robotics</a></li>
+                  <li class="nav-item mb-2"><a href="mailto:frc-contact@firstillinoisrobotics.org" class="nav-link p-0 text-muted"><i class="far fa-envelope"></i> <i>FIRST</i> Robotics Competition</a></li>
+                  <li class="nav-item mb-2"><a href="mailto:ftc-contact@firstillinoisrobotics.org" class="nav-link p-0 text-muted"><i class="far fa-envelope"></i> <i>FIRST</i> Tech Challenge</a></li>
+                  <li class="nav-item mb-2"><a href="mailto:fll-challenge@firstillinoisrobotics.org" class="nav-link p-0 text-muted"><i class="far fa-envelope"></i> <i>FIRST</i> LEGO League Challenge</a></li>
+                  <li class="nav-item mb-2"><a href="mailto:fll-explore@firstillinoisrobotics.org" class="nav-link p-0 text-muted"><i class="far fa-envelope"></i> <i>FIRST</i> LEGO League Explore</a></li>
+                </ul>
+              </div>
+
+              <div class="col-3">
+                <h5><i>FIRST</i> Illinois Robotics Programs</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="{% page_url "home" %}" class="nav-link p-0 text-muted"><i>FIRST</i> Illinois Robotics</a></li>
+                  <li class="nav-item mb-2"><a href="{% page_url "frc" %}" class="nav-link p-0 text-muted"><i>FIRST</i> Robotics Competition</a></li>
+                  <li class="nav-item mb-2"><a href="{% page_url "ftc" %}" class="nav-link p-0 text-muted"><i>FIRST</i> Tech Challenge</a></li>
+                  <li class="nav-item mb-2"><a href="{% page_url "fll-challenge" %}" class="nav-link p-0 text-muted"><i>FIRST</i> LEGO League Challenge</a></li>
+                  <li class="nav-item mb-2"><a href="{% page_url "fll-explore" %}" class="nav-link p-0 text-muted"><i>FIRST</i> LEGO League Explore</a></li>
+                </ul>
+              </div>
+
+              <div class="col-4 offset-1">
+                <div>
+                  <h5 class="mb-3">Donate to Illinois <i>FIRST</i></h5>
+                  <form name="_xclick" action="https://www.paypal.com/cgi-bin/websrc/?" method="post" target="_blank">
+                      <div class="row mb-3">
+                        <label for="donateProgramSelect" class="col-sm-2 col-form-label">Program:</label>
+                      <div class="col-sm-10">
+                        <select id="donateProgramSelect" class="form-select" name="item_name" aria-label="Default select example">
+                            <option id="" value="Illinois FIRST - General">Illinois FIRST - General</option>
+                            <option id="" value="FLL JR Program">FLL JR Program</option>
+                            <option id="" value="FLL Program">FLL Program</option>
+                            <option id="" value="FTC Program">FTC Program</option>
+                            <option id="" value="FRC Program - General">FRC Program - General</option>
+                            <option id="" value="FRC - Central Illinois Regional">FRC - Central Illinois Regional</option>
+                            <option id="" value="FRC - Midwest Regional">FRC - Midwest Regional</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">$</span>
+                      <input type="text" name="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Donate Online</button>
+                    <a class="btn btn-outline-primary" role="button" href="{% page_url "donate" %}">Donate Via Check</a>
+
+                    <input type="hidden" name="cmd" value="_donations">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="business" id="donateBusiness" value="contact@ilftc.org">
+                    <input type="hidden" name="uploaded" value="true">
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between py-4 my-4 border-top">
+              <p class="text-muted">&copy; FIRST Illinois Robotics. All rights reserved. (EIN: #20-0707641) </p>
+              <ul class="list-unstyled d-flex fa-2x">
+                <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/illinoisfirst"><i class="fab fa-facebook-square"></i></a></li>
+                <li class="ms-3"><a class="link-dark" href="https://www.twitter.com/illinoisfirst"><i class="fab fa-twitter"></i></a></li>
+                <li class="ms-3"><a class="link-dark" href="https://www.flickr.com/photos/IllinoisFIRST"><i class="fab fa-flickr"></i></a></li>
+                <li class="ms-3"><a class="link-dark" href="https://www.instagram.com/illinoisfirst/"><i class="fab fa-instagram"></i></a></li>
+                <li class="ms-3"><a class="link-dark" href="https://gallery.firstillinoisrobotics.org/"><i class="fas fa-camera-retro"></i></a></li>
+              </ul>
+            </div>
+          </footer>
+        </div>
         {% render_block "js" %}
     </body>
 </html>

@@ -192,3 +192,10 @@ TEXT_ADDITIONAL_ATTRIBUTES = (
     "height",
     "width",
 )
+
+DJANGOCMS_BOOTSTRAP5_CAROUSEL_ASPECT_RATIOS = (
+    (16, 9),
+    (7, 2),
+    (8, 2),
+    (9, 2),
+)
