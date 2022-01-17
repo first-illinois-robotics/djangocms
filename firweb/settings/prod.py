@@ -64,3 +64,5 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.str("GMAPS_API")
 
 # ONLY safe if deploying through GAE. If deploying elsewhere, this must be modified
 ALLOWED_HOSTS = ["*"]
+
+GOOGLE_MEASUREMENT_ID = env.str("GOOGLE_MEASUREMENT_ID", None)

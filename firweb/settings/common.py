@@ -86,6 +86,7 @@ TEMPLATES = [
                 "sekizai.context_processors.sekizai",
                 "django.template.context_processors.static",
                 "cms.context_processors.cms_settings",
+                "firweb.context_processors.analytics_tag"
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
