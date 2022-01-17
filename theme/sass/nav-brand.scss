@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "~bootstrap/scss/mixins";
 
 @import "colors";
 
@@ -48,19 +49,27 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 
       .fll-logo {
         width: auto;
-        height: 100%; // this is all good since the FLL logos include the spacing required anyway
+        max-height: 100%; // this is all good since the FLL logos include the spacing required anyway
+        max-width: 90%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
 
       .non-fll-logo {
         position: absolute;
         width: auto;
-        height: 60%; // height of both FTC and FRC kept similar instead of width
+        max-height: 60%; // height of both FTC and FRC kept similar instead of width
         // FRC is slightly wider than FTC, this keeps them at the same scale
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         margin: auto;
+        max-width: 90%;
       }
     }
 
@@ -88,11 +97,18 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 
 .sub-program-nav {
   display: none; // all sub program nav hidden by default
+  line-height: 16px;
 
-  &.current-program {
-    display: block; // server default selecting program
-    // this ensures the django template will show valid CSS even before JS loads
-    // this class is set inside navbar_wrap.html
+
+
+  @include media-breakpoint-up(sm) {
+    // want to hide all of the nav on small devices (show our responsive menu instead)
+
+    &.current-program {
+      display: block; // server default selecting program
+      // this ensures the django template will show valid CSS even before JS loads
+      // this class is set inside navbar_wrap.html
+    }
   }
 
   &.frc-brand {

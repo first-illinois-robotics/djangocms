@@ -13,9 +13,9 @@ for (let i = 0; i < program_logos.length; i++) {
         for (const prog of programs) {
             const menu = document.getElementById(prog + "-menu");
             if ((<Element>e.target).id.startsWith(prog)) {
-                menu.style.display = "block";
+                menu.classList.add("current-program");
             } else {
-                menu.style.display = "none";
+                menu.classList.remove("current-program");
             }
         }
     })
