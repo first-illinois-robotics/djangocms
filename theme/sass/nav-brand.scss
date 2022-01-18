@@ -9,7 +9,7 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 .program-navigation {
   background-color: $first-grey;
 
-  .container-lg {
+  div {
     white-space: normal;
 
     .program-main-brand {
@@ -97,9 +97,6 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 
 .sub-program-nav {
   display: none; // all sub program nav hidden by default
-  line-height: 16px;
-
-
 
   @include media-breakpoint-up(sm) {
     // want to hide all of the nav on small devices (show our responsive menu instead)
@@ -133,5 +130,41 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 
   &.home-brand {
     background-color: #bab8ba;
+  }
+}
+
+// mobile overflow
+
+.offcanvas-body {
+  .frc-brand {
+    background-color: $frc-blue;
+  }
+
+  .ftc-brand {
+    background-color: $ftc-orange;
+  }
+
+  .fllc-brand {
+    background-color: $fll-red;
+  }
+
+  .flle-brand {
+    background-color: $fll-green;
+  }
+
+  .flld-brand {
+    background-color: $fll-purple;
+  }
+
+  .home-brand {
+    background-color: #bab8ba;
+  }
+
+  img {
+    max-width: 100%;
+    width: auto;
+    height: 60px;
+    display: block;
+    margin: 1em auto;
   }
 }

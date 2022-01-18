@@ -1,0 +1,18 @@
+<li class="dropdown-submenu">
+    <a class="dropdown-item" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+        {{ children.get_menu_title|safe }}
+    </a>
+    <ul class="dropdown-menu">
+        {% for child in children.children %}
+            <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+                {% if child.is_leaf_node %}
+                    <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                        {{ child.get_menu_title|safe }}
+                    </a>
+                {% else %}
+                    {% include "menus/grandchild.html" with children=child %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</li>

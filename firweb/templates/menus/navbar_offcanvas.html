@@ -1,0 +1,27 @@
+{% spaceless %}
+    {% for child in children %}
+        <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+            {% if child.is_leaf_node %}
+                <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                    {{ child.get_menu_title|safe }}
+                </a>
+            {% else %}
+                <a id="navbarDropdown{{ child.get_absolute_url | slugify}}" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ child.get_menu_title|safe }}
+                </a>
+                <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown{{ child.get_absolute_url | slugify}}">
+                {% if child.visible %}
+                    <a class="dropdown-item" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                        {{ child.get_menu_title|safe}}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                {% endif %}
+                {% for grandchild in child.children %}
+                    <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem">
+                        {{ grandchild.get_menu_title|safe }}
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endspaceless %}

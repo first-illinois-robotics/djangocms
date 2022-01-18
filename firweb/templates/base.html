@@ -1,4 +1,4 @@
-{% load static cms_tags sekizai_tags %}
+{% load static cms_tags sekizai_tags menu_tags %}
 {% include "generated/asset-tags.html" %}
 <!doctype html>
 <html lang="en">
@@ -51,7 +51,7 @@
         </nav>
 
         <nav class="program-navigation d-none d-sm-block d-md-block d-lg-block " id="main-program-navigation">
-            <div class="container-lg">
+            <div class="container">
                 {% spaceless %}
                 <a href="{% page_url "home" %}" class="program-main-brand program-nav-box" id="main-logo">
                     <img src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
@@ -79,8 +79,19 @@
                 {% endspaceless %}
             </div>
         </nav>
-
-        {% include "menus/navbar_wrap.html" %}
+        {% if "frc" in request.path %}
+            {% include "menus/navbar_wrap.html" with program="frc" %}
+        {% elif "ftc" in request.path %}
+            {% include "menus/navbar_wrap.html" with program="ftc" %}
+        {% elif "fll-explore" in request.path %}
+            {% include "menus/navbar_wrap.html" with program="flle" %}
+        {% elif "fll-challenge" in request.path %}
+            {% include "menus/navbar_wrap.html" with program="fllc" %}
+        {% elif "ftc" in request.path %}
+            {% include "menus/navbar_wrap.html" with program="ftc" %}
+        {% else %}
+            {% include "menus/navbar_wrap.html" with program="none" %}
+        {% endif %}
 
 
           <nav class="navbar navbar-dark bg-dark d-block d-sm-none sticky-top" aria-label="First navbar example">
@@ -92,14 +103,15 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
 
-                <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                   <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
-                  <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
+                  <div class="offcanvas-body p-0">
+                    <ul class="navbar-nav justify-content-end pe-3 frc-brand">
+                        <img src="{% static "FIRSTRobotics_Type_White.png" %}" alt="FIRST Robotics Competition">
+                        {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar_offcanvas.html" %}
                     </ul>
                     <form class="d-flex" action="{% page_url "search" %}">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
