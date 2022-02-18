@@ -95,7 +95,7 @@ jobs:
 
       - name: Build Frontend
         run: |
-          cd theme
+          cd ./frontend
           yarn run build
 
       - name: Collect Static
