@@ -12,23 +12,23 @@ poetry install
 
 ### Starting/building the Frontend Server
 There are two options for how to run the frontend system using development. 
-If you are changing anything in the `theme/` directory with your work, you should run webpack/yarn
+If you are changing anything in the `frontend/` directory with your work, you should run webpack/yarn
 in watch mode, with the following commands:
 
 ```
-cd theme/
+cd frontend/
 yarn run watch
 ```
 
 This spawns a separate server on port 9000 to serve the front end materials. If you kill the `yarn run watch` command, 
 this server will die and your assets (JS, CSS, etc) will stop being available, rendering the site... very hard to use.
 
-If you are not modifying the `theme/` directory at all, and only modifying or testing the python side of the project,
+If you are not modifying the `frontend/` directory at all, and only modifying or testing the python side of the project,
 you can simply build a developer version to be served locally:
 
 
 ```
-cd theme/
+cd frontend/
 yarn run build_dev
 ```
 

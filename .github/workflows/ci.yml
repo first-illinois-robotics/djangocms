@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Node Dependencies
         run: |
-          cd theme
+          cd ./frontend
           yarn install
 
       - name: Run linters
@@ -48,10 +48,10 @@ jobs:
           mypy: true
           mypy_command_prefix: poetry run
           eslint: true
-          eslint_dir: ./theme/ts/
+          eslint_dir: ./frontend/ts/
           eslint_extensions: js,ts
           stylelint: true
-          stylelint_dir: ./theme/sass/
+          stylelint_dir: ./frontend/sass/
           auto_fix: false
 
   deploy:
@@ -90,7 +90,7 @@ jobs:
 
       - name: Install Node Dependencies
         run: |
-          cd theme
+          cd ./frontend
           yarn install
 
       - name: Build Frontend

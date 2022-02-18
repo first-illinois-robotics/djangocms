@@ -9,12 +9,12 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: "inline-cheap-source-map",
     output: {
-        publicPath: "http://localhost:9000/"
+        publicPath: "http://localhost:9001/"
     },
     devServer: {
         publicPath: "/",
         contentBase: path.join(__dirname, 'dist'),
-        port: 9000,
+        port: 9001,
         writeToDisk: true,
     },
     plugins: [
