@@ -1,0 +1,23 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/variables';
+
+@import "colors";
+
+// Adding custom colors
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "frc":        $frc-blue,
+  "ftc":        $ftc-orange,
+  "fllc":       $fll-red,
+  "flle":       $fll-green,
+  "flld":       $fll-purple,
+);
+

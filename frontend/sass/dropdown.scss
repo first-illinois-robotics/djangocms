@@ -12,16 +12,6 @@
 		-moz-border-radius: 0 6px 6px;
 		border-radius: 0 6px 6px 6px;
 	}
-	&:hover {
-		.dropdown-menu {
-			display: block;
-		}
-		a {
-			&:after {
-				border-left-color: #fff;
-			}
-		}
-	}
 	a {
 		&:after {
 			display: block;
@@ -37,6 +27,17 @@
 			margin-right: -10px;
 		}
 	}
+	&:hover {
+		.dropdown-menu {
+			display: block;
+		}
+		a {
+			&:after {
+				border-left-color: #fff;
+			}
+		}
+	}
+
 	&.pull-left {
 		float: none;
 		.dropdown-menu {

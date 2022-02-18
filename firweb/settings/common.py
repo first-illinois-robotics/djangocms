@@ -195,9 +195,25 @@ TEXT_ADDITIONAL_ATTRIBUTES = (
     "width",
 )
 
-DJANGOCMS_BOOTSTRAP5_CAROUSEL_ASPECT_RATIOS = (
+DJANGOCMS_FRONTEND_CAROUSEL_ASPECT_RATIOS = (
     (16, 9),
     (7, 2),
     (8, 2),
     (9, 2),
+)
+
+DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES = (
+    ('primary', 'Primary'),
+    ('secondary', 'Secondary'),
+    ('success', 'Success'),
+    ('danger', 'Danger'),
+    ('warning', 'Warning'),
+    ('info', 'Info'),
+    ('light', 'Light'),
+    ('dark', 'Dark'),
+    ('frc', 'FIRST Robotics Competiton'),
+    ('ftc', "FIRST Tech Challenge"),
+    ('fllc', "FIRST LEGO League Challenge"),
+    ('flle', "FIRST LEGO League Explore"),
+    ('flld', "FIRST LEGO League Discover"),
 )

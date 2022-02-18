@@ -6,6 +6,42 @@
 $program-main-brand-width: 25%;
 $programs: 5; // NOT including main brand (used for splitting up programs evenly width wise)
 
+// mobile overflow
+
+.offcanvas-body {
+  .frc-brand {
+    background-color: $frc-blue;
+  }
+
+  .ftc-brand {
+    background-color: $ftc-orange;
+  }
+
+  .fllc-brand {
+    background-color: $fll-red;
+  }
+
+  .flle-brand {
+    background-color: $fll-green;
+  }
+
+  .flld-brand {
+    background-color: $fll-purple;
+  }
+
+  .home-brand {
+    background-color: $fir-grey;
+  }
+
+  img {
+    max-width: 100%;
+    width: auto;
+    height: 60px;
+    display: block;
+    margin: 1em auto;
+  }
+}
+
 .program-navigation {
   background-color: $first-grey;
 
@@ -14,7 +50,7 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
 
     .program-main-brand {
       width: $program-main-brand-width;
-      background-color: #bab8ba;
+      background-color: $fir-grey;
       position: relative;
 
       img {
@@ -129,42 +165,8 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
   }
 
   &.home-brand {
-    background-color: #bab8ba;
+    background-color: $fir-grey;
   }
 }
 
-// mobile overflow
 
-.offcanvas-body {
-  .frc-brand {
-    background-color: $frc-blue;
-  }
-
-  .ftc-brand {
-    background-color: $ftc-orange;
-  }
-
-  .fllc-brand {
-    background-color: $fll-red;
-  }
-
-  .flle-brand {
-    background-color: $fll-green;
-  }
-
-  .flld-brand {
-    background-color: $fll-purple;
-  }
-
-  .home-brand {
-    background-color: #bab8ba;
-  }
-
-  img {
-    max-width: 100%;
-    width: auto;
-    height: 60px;
-    display: block;
-    margin: 1em auto;
-  }
-}
