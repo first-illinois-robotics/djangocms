@@ -1,0 +1,14 @@
+// This file is compiled into it's own separate CSS file
+// To be included in the djangocms-frontend editing interface
+// such that the colors of the custom themes can be shown in there
+
+@import "bootstrap_vars";
+@import "../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/functions";
+
+@each $name, $value in $custom-colors {
+  .frontend-button-group .btn-#{$name} {
+    background: $value;
+    color: color-contrast($value);
+  }
+}

@@ -217,3 +217,5 @@ DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES = (
     ('flle', "FIRST LEGO League Explore"),
     ('flld', "FIRST LEGO League Discover"),
 )
+
+DJANGOCMS_FRONTEND_ADMIN_CSS = {"all": ("css/cms_admin.css",)}

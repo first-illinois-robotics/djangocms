@@ -6,7 +6,11 @@ const HtmlWebpackPluginDjango = require("html-webpack-plugin-django");
 
 module.exports = {
     entry: {
-        'main': './ts/index.ts'
+        'main': './ts/index.ts',
+        'cms_admin': {
+            import: './sass/djangocms_admin.scss',
+            filename: 'djangocms_admin.js'
+        }
     },
     output: {
         path: path.resolve('./dist/'),
@@ -21,7 +25,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].[contenthash].css",
+            filename: "css/[name].css",
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './asset-tags.ejs'),
