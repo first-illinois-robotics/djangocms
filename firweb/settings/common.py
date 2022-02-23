@@ -203,19 +203,19 @@ DJANGOCMS_FRONTEND_CAROUSEL_ASPECT_RATIOS = (
 )
 
 DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES = (
-    ('primary', 'Primary'),
-    ('secondary', 'Secondary'),
-    ('success', 'Success'),
-    ('danger', 'Danger'),
-    ('warning', 'Warning'),
-    ('info', 'Info'),
-    ('light', 'Light'),
-    ('dark', 'Dark'),
-    ('frc', 'FIRST Robotics Competiton'),
-    ('ftc', "FIRST Tech Challenge"),
-    ('fllc', "FIRST LEGO League Challenge"),
-    ('flle', "FIRST LEGO League Explore"),
-    ('flld', "FIRST LEGO League Discover"),
+    ("primary", "Primary"),
+    ("secondary", "Secondary"),
+    ("success", "Success"),
+    ("danger", "Danger"),
+    ("warning", "Warning"),
+    ("info", "Info"),
+    ("light", "Light"),
+    ("dark", "Dark"),
+    ("frc", "FIRST Robotics Competiton"),
+    ("ftc", "FIRST Tech Challenge"),
+    ("fllc", "FIRST LEGO League Challenge"),
+    ("flle", "FIRST LEGO League Explore"),
+    ("flld", "FIRST LEGO League Discover"),
 )
 
 DJANGOCMS_FRONTEND_ADMIN_CSS = {"all": ("css/cms_admin.css",)}

@@ -10,6 +10,3 @@ import "../sass/index.scss";
 
 import "./nav-switch.ts";
 import "./donate.ts"
-import {initReloadScriptsOnContentRefresh} from "./reload";
-
-initReloadScriptsOnContentRefresh();
