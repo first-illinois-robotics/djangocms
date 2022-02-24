@@ -68,8 +68,8 @@ ALLOWED_HOSTS = ["*"]
 GOOGLE_MEASUREMENT_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
 
 CACHES = {
-    'default': {
-        'BACKEND': 'firweb.backends.GaeMemcachedCache',
+    "default": {
+        "BACKEND": "firweb.backends.GaeMemcachedCache",
     }
 }
 
