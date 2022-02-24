@@ -101,8 +101,9 @@ jobs:
       - name: Collect Static
         run: poetry run python manage.py collectstatic
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+      - name: Set up Cloud SDK (Staging)
+        uses: google-github-actions/setup-gcloud@v0
+        if: ${{ github.ref == 'refs/heads/develop' }}
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
@@ -114,15 +115,14 @@ jobs:
           creds: ${{ secrets.GCP_SA_KEY }}
           instance: ${{ secrets.GCP_DB_NAME }}
 
-      - name: Apply Database Migrations to Staging DB
+      - name: Apply Database Migrations to DB
         env:
           GOOGLE_CLOUD_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           USE_CLOUD_SQL_AUTH_PROXY: true
         run: LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 poetry run python manage.py migrate
 
-      - name: Deploy Staging
-        uses: google-github-actions/deploy-appengine@main
-        if: ${{ github.ref == 'refs/heads/develop' }}
+      - name: Deploy to Google App ENgine
+        run: gcloud beta app deploy --quiet app.yaml --promote
 
   docs:
     runs-on: ubuntu-latest

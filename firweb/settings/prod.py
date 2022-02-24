@@ -66,3 +66,12 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.str("GMAPS_API")
 ALLOWED_HOSTS = ["*"]
 
 GOOGLE_MEASUREMENT_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
+
+CACHES = {
+    'default': {
+        'BACKEND': 'firweb.backends.GaeMemcachedCache',
+    }
+}
+
+EMAIL_BACKEND = "firweb.backends.GaeMailBackend"
+DEFAULT_FROM_EMAIL = "noreply@firstillinoisrobotics.org"

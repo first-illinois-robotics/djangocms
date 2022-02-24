@@ -100,7 +100,7 @@ $program-colors: (
       .non-fll-logo {
         position: absolute;
         width: auto;
-        max-height: 60%; // height of both FTC and FRC kept similar instead of width
+        max-height: 55%; // height of both FTC and FRC kept similar instead of width
         // FRC is slightly wider than FTC, this keeps them at the same scale
         top: 0;
         bottom: 0;
@@ -112,8 +112,8 @@ $program-colors: (
         transition-timing-function: ease-in-out;
       }
       &:hover .non-fll-logo{
-        max-width: 95%;
-        max-height: 70%;
+        max-width: 90%;
+        max-height: 65%;
       }
     }
     @each $name, $value in $program-colors {

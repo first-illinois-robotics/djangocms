@@ -36,6 +36,7 @@ google-cloud-secret-manager = "2.8.0"
 mysqlclient = "^2.1"
 google-cloud-storage = "^1.43.0"
 google-cloud-logging = "^2.7.0"
+appengine-python-standard = "0.3.1"
 # fix for compatability with django 3.2
 aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0a52d4c"  }
 Whoosh = "^2.7.4"
