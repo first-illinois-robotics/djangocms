@@ -7,7 +7,7 @@ const path = require("path");
 module.exports = merge(common, {
     target: "web",
     mode: 'development',
-    devtool: "inline-cheap-source-map",
+    devtool: "eval",
     output: {
         publicPath: "http://localhost:9001/"
     },

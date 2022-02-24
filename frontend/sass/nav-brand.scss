@@ -1,36 +1,29 @@
 @use "sass:math";
 @use "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
 
 @import "colors";
 
 $program-main-brand-width: 25%;
 $programs: 5; // NOT including main brand (used for splitting up programs evenly width wise)
 
+$program-colors: (
+  "frc": $frc-blue,
+  "ftc": $ftc-orange,
+  "fllc": $fll-red,
+  "flle": $fll-green,
+  "flld": $fll-purple,
+  "home": $fir-grey,
+);
+
 // mobile overflow
 
 .offcanvas-body {
-  .frc-brand {
-    background-color: $frc-blue;
-  }
 
-  .ftc-brand {
-    background-color: $ftc-orange;
-  }
-
-  .fllc-brand {
-    background-color: $fll-red;
-  }
-
-  .flle-brand {
-    background-color: $fll-green;
-  }
-
-  .flld-brand {
-    background-color: $fll-purple;
-  }
-
-  .home-brand {
-    background-color: $fir-grey;
+  @each $name, $value in $program-colors {
+    .#{$name}-brand {
+      background-color: $value;
+    }
   }
 
   img {
@@ -64,6 +57,10 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
         margin: auto;
         padding-bottom: 5px; // Propping up since the FIRST should be centered with the other logos, not the whole logo
         // maybe change this to an em value?
+        transition: width 0.25s;
+      }
+      &:hover img {
+        width: 90%;
       }
     }
 
@@ -93,6 +90,11 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
         left: 0;
         right: 0;
         margin: auto;
+        transition: max-height 0.25s;
+        transition-timing-function: ease-in-out;
+      }
+      &:hover .fll-logo{
+        max-height: 115%;
       }
 
       .non-fll-logo {
@@ -106,27 +108,18 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
         right: 0;
         margin: auto;
         max-width: 90%;
+        transition: max-width 0.25s, max-height 0.25s;
+        transition-timing-function: ease-in-out;
+      }
+      &:hover .non-fll-logo{
+        max-width: 95%;
+        max-height: 70%;
       }
     }
-
-    .frc-brand {
-      background-color: $frc-blue;
-    }
-
-    .ftc-brand {
-      background-color: $ftc-orange;
-    }
-
-    .fllc-brand {
-      background-color: $fll-red;
-    }
-
-    .flle-brand {
-      background-color: $fll-green;
-    }
-
-    .flld-brand {
-      background-color: $fll-purple;
+    @each $name, $value in $program-colors {
+      .#{$name}-brand {
+        background-color: $value;
+      }
     }
   }
 }
@@ -143,30 +136,20 @@ $programs: 5; // NOT including main brand (used for splitting up programs evenly
       // this class is set inside navbar_wrap.html
     }
   }
+  @each $name, $value in $program-colors {
+    &.#{$name}-brand {
+      background-color: $value;
 
-  &.frc-brand {
-    background-color: $frc-blue;
+      .nav-link {
+        color: tint-color(color-contrast($value), 20%);
+      }
+
+      .nav-link:hover, .nav-item.active>.nav-link {
+        color: tint-color(color-contrast($value), 0%);
+      }
+    }
   }
 
-  &.ftc-brand {
-    background-color: $ftc-orange;
-  }
-
-  &.fllc-brand {
-    background-color: $fll-red;
-  }
-
-  &.flle-brand {
-    background-color: $fll-green;
-  }
-
-  &.flld-brand {
-    background-color: $fll-purple;
-  }
-
-  &.home-brand {
-    background-color: $fir-grey;
-  }
 }
 
 
