@@ -200,6 +200,8 @@ DJANGOCMS_FRONTEND_CAROUSEL_ASPECT_RATIOS = (
     (7, 2),
     (8, 2),
     (9, 2),
+    (25, 9),
+    (32, 9),
 )
 
 DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES = (
