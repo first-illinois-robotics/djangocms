@@ -108,6 +108,7 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
+          install_components: 'beta'
 
       - name: Connect to Cloud SQL Proxy
         uses: mattes/gce-cloudsql-proxy-action@v1
@@ -121,7 +122,7 @@ jobs:
           USE_CLOUD_SQL_AUTH_PROXY: true
         run: LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 poetry run python manage.py migrate
 
-      - name: Deploy to Google App ENgine
+      - name: Deploy to Google App Engine
         run: gcloud beta app deploy --quiet app.yaml --promote
 
   docs:
