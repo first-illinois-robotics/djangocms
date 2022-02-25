@@ -1,3 +1,5 @@
+{# TODO: Redo this file with accordions or something that looks much nicer on mobile #}
+
 {% spaceless %}
     {% for child in children %}
         <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
