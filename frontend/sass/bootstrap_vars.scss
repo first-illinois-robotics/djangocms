@@ -1,16 +1,17 @@
+@use "colors";
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
-@import "colors";
 
 // Adding custom colors
 $custom-colors:(
-  "frc":        $frc-blue,
-  "ftc":        $ftc-orange,
-  "fllc":       $fll-red,
-  "flle":       $fll-green,
-  "flld":       $fll-purple,
+  "frc":        colors.$frc-blue,
+  "ftc":        colors.$ftc-orange,
+  "fllc":       colors.$fll-red,
+  "flle":       colors.$fll-green,
+  "flld":       colors.$fll-purple,
 );
 
 // get around problem in bootstrap 5.1.x, will be fixed in 5.2.x

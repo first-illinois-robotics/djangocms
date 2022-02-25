@@ -1,6 +1,7 @@
 @use "sass:math";
 @use "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
 
 @import "colors";
 
@@ -23,6 +24,14 @@ $program-colors: (
   @each $name, $value in $program-colors {
     .#{$name}-brand {
       background-color: $value;
+
+      .nav-link {
+        color: tint-color(color-contrast($value), 20%);
+      }
+
+      .nav-link:hover, .nav-item.active>.nav-link {
+        color: tint-color(color-contrast($value), 0%);
+      }
     }
   }
 
@@ -33,63 +42,61 @@ $program-colors: (
     display: block;
     margin: 1em auto;
   }
+
+  .fll-logo {
+    height: 75px;
+    margin: 0.25em auto;
+  }
+
+}
+
+.offcanvas-title {
+  img {
+    height: 1.5em;
+    width: auto;
+  }
+}
+
+.brand-opener {
+  background-image: svg("./fir_mobile_open.svg");display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .program-navigation {
   background-color: $first-grey;
 
-  div {
+  .container {
     white-space: normal;
-
-    .program-main-brand {
-      width: $program-main-brand-width;
-      background-color: $fir-grey;
-      position: relative;
-
-      img {
-        position: absolute;
-        width: 85%;
-        height: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        padding-bottom: 5px; // Propping up since the FIRST should be centered with the other logos, not the whole logo
-        // maybe change this to an em value?
-        transition: width 0.25s;
-      }
-      &:hover img {
-        width: 90%;
-      }
-    }
-
-    .program-brand {
-      width: math.div(100 - $program-main-brand-width, $programs);
-    }
+    display: grid;
+    grid-template-columns: 1.5fr repeat($programs, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 0;
 
     .program-nav-box {
-      display: inline-block;
-      height: 110px;
-      line-height: 50px;
-      font-weight: bold;
-      font-size: 3em;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      vertical-align: middle;
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+
+      // colors
+      @each $name, $value in $program-colors {
+        &.#{$name}-brand {
+          background-color: $value;
+        }
+      }
+
+      //interior images (three different cases)
 
       .fll-logo {
         width: auto;
+        margin: -10px;
         max-height: 100%; // this is all good since the FLL logos include the spacing required anyway
         max-width: 90%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
         transition: max-height 0.25s;
         transition-timing-function: ease-in-out;
       }
@@ -98,27 +105,27 @@ $program-colors: (
       }
 
       .non-fll-logo {
-        position: absolute;
         width: auto;
-        max-height: 55%; // height of both FTC and FRC kept similar instead of width
+        max-height: 50%; // height of both FTC and FRC kept similar instead of width
         // FRC is slightly wider than FTC, this keeps them at the same scale
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        max-width: 90%;
+        max-width: 100%;
+
         transition: max-width 0.25s, max-height 0.25s;
         transition-timing-function: ease-in-out;
       }
       &:hover .non-fll-logo{
-        max-width: 90%;
-        max-height: 65%;
+        max-height: 60%;
       }
-    }
-    @each $name, $value in $program-colors {
-      .#{$name}-brand {
-        background-color: $value;
+
+      .brand-logo {
+        width: 82.5%;
+        height: auto;
+        padding-bottom: 5px; // Propping up since the FIRST should be centered with the other logos, not the whole logo
+        // maybe change this to an em value?
+        transition: width 0.25s;
+      }
+      &:hover .brand-logo {
+        width: 90%;
       }
     }
   }

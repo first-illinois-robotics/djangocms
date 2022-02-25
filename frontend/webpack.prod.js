@@ -4,6 +4,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const path = require("path");
+const inliner = require("sass-inline-svg");
 
 module.exports = merge(common, {
     mode: 'production',
@@ -31,7 +32,16 @@ module.exports = merge(common, {
                     MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
-                    "sass-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                functions: {
+                                    "svg($path, $selectors: null)": inliner('./sass', {optimize: true})
+                                }
+                            },
+                        },
+                    },
                 ],
             },
         ],

@@ -1,13 +1,9 @@
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+const dev = require('./webpack.dev.js');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
-module.exports = merge(common, {
-    target: "web",
-    mode: 'development',
-    devtool: "eval",
+module.exports = merge(dev, {
     output: {
         publicPath: "http://localhost:9001/"
     },
@@ -20,16 +16,4 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackHarddiskPlugin()
     ],
-    module: {
-        rules: [
-            {
-                test: /\.s?css/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    "sass-loader",
-                ],
-            },
-        ],
-    },
 });
