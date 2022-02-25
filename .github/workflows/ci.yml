@@ -101,29 +101,46 @@ jobs:
       - name: Collect Static
         run: poetry run python manage.py collectstatic
 
-      - name: Set up Cloud SDK (Staging)
-        uses: google-github-actions/setup-gcloud@v0
+      - id: auth-staging
+        name: Authenticate to Google Cloud (Staging/Develop)
+        uses: google-github-actions/auth@v0
         if: ${{ github.ref == 'refs/heads/develop' }}
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+          credentials_json: ${{ secrets.STAGING_SA_KEY }}
+
+      - id: auth-prod
+        name: Authenticate to Google Cloud (Production)
+        uses: google-github-actions/auth@v0
+        if: ${{ github.ref == 'refs/heads/prod' }}
+        with:
+          credentials_json: ${{ secrets.PROD_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
           install_components: 'beta'
 
-      - name: Connect to Cloud SQL Proxy
+      - name: Connect to Cloud SQL Proxy (Staging/Develop)
         uses: mattes/gce-cloudsql-proxy-action@v1
+        if: ${{ github.ref == 'refs/heads/develop' }}
         with:
-          creds: ${{ secrets.GCP_SA_KEY }}
+          creds: ${{ secrets.STAGING_SA_KEY }}
+          instance: ${{ secrets.GCP_DB_NAME }}
+
+      - name: Connect to Cloud SQL Proxy (Production)
+        uses: mattes/gce-cloudsql-proxy-action@v1
+        if: ${{ github.ref == 'refs/heads/prod' }}
+        with:
+          creds: ${{ secrets.PROD_SA_KEY }}
           instance: ${{ secrets.GCP_DB_NAME }}
 
       - name: Apply Database Migrations to DB
         env:
-          GOOGLE_CLOUD_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           USE_CLOUD_SQL_AUTH_PROXY: true
         run: LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 poetry run python manage.py migrate
 
       - name: Deploy to Google App Engine
-        run: gcloud beta app deploy --quiet app.yaml --promote
+        run: gcloud beta app deploy app.yaml --promote
 
   docs:
     runs-on: ubuntu-latest
