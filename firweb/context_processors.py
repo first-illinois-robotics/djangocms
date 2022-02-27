@@ -7,15 +7,15 @@ def analytics_tag(request: HttpRequest):
 
 
 def program(request: HttpRequest):
-    ret = {"program": None}
     if request.path.startswith("/frc"):
-        ret["program"] = "frc"
+        return {"program": "frc"}
     elif request.path.startswith("/ftc"):
-        ret["program"] = "ftc"
+        return {"program": "ftc"}
     elif request.path.startswith("/fll-challenge"):
-        ret["program"] = "fllc"
+        return {"program": "flle"}
     elif request.path.startswith("/fll-explore"):
-        ret["program"] = "flle"
+        return {"program": "flle"}
     elif request.path.startswith("/fll-discover"):
-        ret["program"] = "flld"
-    return ret
+        return {"program": "flld"}
+    else:
+        return {"program": None}

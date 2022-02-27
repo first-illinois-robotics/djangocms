@@ -65,6 +65,21 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.str("GMAPS_API")
 # ONLY safe if deploying through GAE. If deploying elsewhere, this must be modified
 ALLOWED_HOSTS = ["*"]
 
+# Various security settings
+# see https://www.django-cms.org/en/blog/2022/02/22/security-enhancements-for-django-cms/
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+SECURE_HSTS_SECONDS = 31536000  # 1 Year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = True
+
+CMS_TOOLBAR_ANONYMOUS_ON = False
+
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
 GOOGLE_MEASUREMENT_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
 
 if not os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):

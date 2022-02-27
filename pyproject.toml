@@ -7,7 +7,7 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 python = ">=3.9, <4"
 django-cms = ">=3.9,<3.10"
-djangocms-admin-style = ">=2.0,<3.0"
+djangocms-admin-style = "3.0"
 django-treebeard = ">=4.0,<5.0"
 djangocms-text-ckeditor = ">=4.0,<5.0"
 djangocms-link = ">=3.0,<4.0"
@@ -28,14 +28,12 @@ html5lib = ">=1.0.1"
 Pillow = ">=3.0"
 six = "^1.16.0"
 pytz = "^2021.1"
-uvicorn = { version = "0.16", extras = ["standard"]}
-gunicorn = "^20.1.0"
 django-storages = { version = "^1.11.1", extras = ["google"]}
 django-environ = "^0.8"
 google-cloud-secret-manager = "2.8.0"
 mysqlclient = "^2.1"
-google-cloud-storage = "^1.43.0"
-google-cloud-logging = "^2.7.0"
+google-cloud-storage = "2.1"
+google-cloud-logging = "3.0"
 appengine-python-standard = "0.3.1"
 # fix for compatability with django 3.2
 aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0a52d4c"  }
@@ -44,9 +42,9 @@ aldryn-common = "^1.0.5"
 requests = "^2.27.0"
 
 [tool.poetry.dev-dependencies]
-black = "^21.7b0"
+black = "22.1"
 django-livereload-server = "0.4"
-mypy = "^0.930"
+mypy = "0.931"
 django-stubs = "^1.9.0"
 types-requests = "^2.26.3"
 
@@ -57,6 +55,13 @@ build-backend = "poetry.core.masonry.api"
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]
 exclude = "migrations.*"
+
+[[tool.mypy.overrides]]
+module = [
+    "google",
+]
+ignore_missing_imports = true
+
 
 [tool.django-stubs]
 django_settings_module = "firweb.settings"
