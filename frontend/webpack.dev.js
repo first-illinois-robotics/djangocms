@@ -6,7 +6,7 @@ var inliner = require('sass-inline-svg');
 module.exports = merge(common, {
     target: "web",
     mode: 'development',
-    devtool: "inline-cheap-source-map",
+    devtool: "source-map",
     output: {
         publicPath: "/static/"
     },

@@ -101,13 +101,14 @@ TEMPLATES = [
 MIDDLEWARE = [
     "cms.middleware.utils.ApphookReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.locale.LocaleMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "cms.middleware.user.CurrentUserMiddleware",
     "cms.middleware.page.CurrentPageMiddleware",
     "cms.middleware.toolbar.ToolbarMiddleware",
@@ -136,6 +137,8 @@ INSTALLED_APPS = [
     "aldryn_search",
     "standard_form",
     "spurl",
+    "gtm",
+    "corsheaders",
     "djangocms_file",
     "djangocms_icon",
     "djangocms_frontend",
@@ -166,6 +169,16 @@ CMS_TEMPLATES = (("fullwidth.html", "Fullwidth"),)
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:9001",
+    "http://127.0.0.1:8000",
+    "https://storage.googleapis.com",
+    "https://www.google-analytics.com",
+    "https://www.googletagmanager.com"
+]
+
+
 CMS_PERMISSION = True
 
 THUMBNAIL_PROCESSORS = (
@@ -185,6 +198,8 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+# get high-res thumbnails
+THUMBNAIL_HIGH_RESOLUTION = True
 
 # allow iframes in text fields
 TEXT_ADDITIONAL_TAGS = ("iframe",)

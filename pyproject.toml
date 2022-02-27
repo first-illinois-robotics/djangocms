@@ -40,6 +40,8 @@ aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0
 Whoosh = "^2.7.4"
 aldryn-common = "^1.0.5"
 requests = "^2.27.0"
+django-google-tag-manager = "0.0.5"
+django-cors-headers = "3.11"
 
 [tool.poetry.dev-dependencies]
 black = "22.1"

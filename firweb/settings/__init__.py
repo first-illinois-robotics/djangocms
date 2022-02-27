@@ -7,7 +7,4 @@ else:
     INSTALLED_APPS.insert(
         INSTALLED_APPS.index("django.contrib.staticfiles"), "livereload"
     )
-    MIDDLEWARE += [
-        "livereload.middleware.LiveReloadScript",
-    ]
     from .dev import *

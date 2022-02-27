@@ -178,11 +178,11 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "cssselect2"
-version = "0.4.1"
-description = "cssselect2"
+version = "0.5.0"
+description = "CSS selectors for Python ElementTree"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 tinycss2 = "*"
@@ -248,6 +248,17 @@ django-treebeard = ">=4.3"
 djangocms-admin-style = ">=1.2"
 
 [[package]]
+name = "django-cors-headers"
+version = "3.11.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[[package]]
 name = "django-entangled"
 version = "0.4"
 description = "Edit JSON field using Django Model Form"
@@ -296,6 +307,14 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 Django = ">=2.2"
+
+[[package]]
+name = "django-google-tag-manager"
+version = "0.0.5"
+description = "Easily include your Google Tag Manager tag in your django site"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "django-haystack"
@@ -1317,7 +1336,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <4"
-content-hash = "06a2d1b4a912ea0267ff9c1a0ec3811055b5eb6a15178e41443542951bfe85fa"
+content-hash = "7cd295d51a7b42a34b926962e087b7582300ebb92c82d99d7d1d41fcc5b8a35c"
 
 [metadata.files]
 aldryn-boilerplates = [
@@ -1389,8 +1408,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 cssselect2 = [
-    {file = "cssselect2-0.4.1-py3-none-any.whl", hash = "sha256:2f4a9f20965367bae459e3bb42561f7927e0cfe5b7ea1692757cf67ef5d7dace"},
-    {file = "cssselect2-0.4.1.tar.gz", hash = "sha256:93fbb9af860e95dd40bf18c3b2b6ed99189a07c0f29ba76f9c5be71344664ec8"},
+    {file = "cssselect2-0.5.0-py3-none-any.whl", hash = "sha256:8d4690bce5f25013262997e64cef3e7bade877d3ef126f9cc624e5b1f294d934"},
+    {file = "cssselect2-0.5.0.tar.gz", hash = "sha256:d98a7bbdd8ebc46093279195d669a3359bd5a23f90c19e82c19d9eeef333e617"},
 ]
 django = [
     {file = "Django-3.2.12-py3-none-any.whl", hash = "sha256:9b06c289f9ba3a8abea16c9c9505f25107809fb933676f6c891ded270039d965"},
@@ -1407,6 +1426,10 @@ django-classy-tags = [
 django-cms = [
     {file = "django_cms-3.9.0-py2.py3-none-any.whl", hash = "sha256:6feaa6f3b7f225e08f221cf33d6135a1e268e9b781dae4bf916239c3f54e7b27"},
 ]
+django-cors-headers = [
+    {file = "django-cors-headers-3.11.0.tar.gz", hash = "sha256:eb98389bf7a2afc5d374806af4a9149697e3a6955b5a2dc2bf049f7d33647456"},
+    {file = "django_cors_headers-3.11.0-py3-none-any.whl", hash = "sha256:a22be2befd4069c4fc174f11cf067351df5c061a3a5f94a01650b4e928b0372b"},
+]
 django-entangled = [
     {file = "django-entangled-0.4.tar.gz", hash = "sha256:d53745809906103247dfdb24e5918c30a81de5c33f03e56f98abfb3c924586cd"},
 ]
@@ -1421,6 +1444,9 @@ django-filer = [
 django-formtools = [
     {file = "django-formtools-2.3.tar.gz", hash = "sha256:9663b6eca64777b68d6d4142efad8597fe9a685924673b25aa8a1dcff4db00c3"},
     {file = "django_formtools-2.3-py3-none-any.whl", hash = "sha256:4699937e19ee041d803943714fe0c1c7ad4cab802600eb64bbf4cdd0a1bfe7d9"},
+]
+django-google-tag-manager = [
+    {file = "django-google-tag-manager-0.0.5.tar.gz", hash = "sha256:6e79463f9015c1a40cabbcf7f9e1ef3df8026fd5e49dde762eb322cf575222d6"},
 ]
 django-haystack = [
     {file = "django-haystack-3.1.1.tar.gz", hash = "sha256:6d05756b95d7d5ec1dbd4668eb999ced1504b47f588e2e54be53b1404c516a82"},

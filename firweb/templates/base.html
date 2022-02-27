@@ -1,23 +1,10 @@
-{% load static cms_tags sekizai_tags menu_tags %}
+{% load static cms_tags sekizai_tags menu_tags gtm_tags %}
 {% include "generated/asset-tags.html" %}
 <!doctype html>
 <html lang="en">
 <head>
     <title>{% page_attribute "page_title" %}</title>
-    {% if GOOGLE_MEASUREMENT_ID %}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDJPS7BDTV"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', '{{ GOOGLE_MEASUREMENT_ID }}');
-        </script>
-    {% endif %}
+    {% gtm_head %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,6 +12,7 @@
     {% render_block "css" %}
 </head>
 <body>
+{% gtm_body %}
 {% cms_toolbar %}
 <nav class="nav navbar-expand-sm navbar-dark bg-dark d-none d-sm-block d-md-block d-lg-block lh-sm">
     <div class="container">

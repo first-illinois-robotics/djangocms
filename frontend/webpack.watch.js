@@ -12,6 +12,9 @@ module.exports = merge(dev, {
         contentBase: path.join(__dirname, 'dist'),
         port: 9001,
         writeToDisk: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        }
     },
     plugins: [
         new HtmlWebpackHarddiskPlugin()

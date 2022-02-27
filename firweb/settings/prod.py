@@ -80,7 +80,7 @@ CMS_TOOLBAR_ANONYMOUS_ON = False
 
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
-GOOGLE_MEASUREMENT_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
+GOOGLE_TAG_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
 
 if not os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
     # CACHES = {
