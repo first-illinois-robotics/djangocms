@@ -7,7 +7,7 @@ def program(request: HttpRequest):
     elif request.path.startswith("/ftc"):
         return {"program": "ftc"}
     elif request.path.startswith("/fll-challenge"):
-        return {"program": "flle"}
+        return {"program": "fllc"}
     elif request.path.startswith("/fll-explore"):
         return {"program": "flle"}
     elif request.path.startswith("/fll-discover"):
