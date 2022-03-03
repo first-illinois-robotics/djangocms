@@ -1,11 +1,6 @@
 from django.conf import settings
 from django.http import HttpRequest
 
-
-def analytics_tag(request: HttpRequest):
-    return {"GOOGLE_MEASUREMENT_ID": settings.GOOGLE_MEASUREMENT_ID}
-
-
 def program(request: HttpRequest):
     if request.path.startswith("/frc"):
         return {"program": "frc"}
