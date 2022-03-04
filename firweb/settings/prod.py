@@ -83,11 +83,11 @@ SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 GOOGLE_TAG_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
 
 if not os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
-    CACHES = {
-        "default": {
-            "BACKEND": "firweb.backends.GaeMemcachedCache",
-        }
-    }
+    # CACHES = {
+    #     "default": {
+    #         "BACKEND": "firweb.backends.GaeMemcachedCache",
+    #     }
+    # }
 
     EMAIL_BACKEND = "firweb.backends.GaeMailBackend"
     DEFAULT_FROM_EMAIL = "noreply@firstillinoisrobotics.org"
