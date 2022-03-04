@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.http import HttpRequest
 
+
 def program(request: HttpRequest):
     if request.path.startswith("/frc"):
         return {"program": "frc"}

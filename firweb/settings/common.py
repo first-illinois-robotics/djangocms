@@ -174,7 +174,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://storage.googleapis.com",
     "https://www.google-analytics.com",
-    "https://www.googletagmanager.com"
+    "https://www.googletagmanager.com",
 ]
 
 
