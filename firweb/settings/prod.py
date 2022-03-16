@@ -88,7 +88,9 @@ if not os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
             "BACKEND": "firweb.backends.GaeMemcachedCache",
         }
     }
-    CMS_PAGE_CACHE = False  # Done to avoid cache invalidation at runtime which will fail
+
+    # Done to avoid cache invalidation at runtime which will fail
+    CMS_PAGE_CACHE = False
 
     EMAIL_BACKEND = "firweb.backends.GaeMailBackend"
     DEFAULT_FROM_EMAIL = "noreply@firstillinoisrobotics.org"
