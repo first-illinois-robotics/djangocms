@@ -1,8 +1,12 @@
 from django.http import HttpResponse
 from haystack.management.commands import update_index  # type: ignore
+from django.conf import settings
 
 
 def handle_startup(request):
+    # having the page cache on for the startup will cause a 502
+    # we'll enable it now after everything else is started up
+    settings.configue(CMS_PAGE_CACHE=True)
     # since we're using whoosh with a directory of /tmp we have to rebuild the search index on startup
     # not entirely ideal but beats having to run a ES instance
     # GAE blocks users from the /_ah/ URLs so we don't have to worry about someone calling this externally
