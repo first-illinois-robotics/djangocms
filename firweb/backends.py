@@ -4,6 +4,7 @@ from typing import Sequence
 from django.core.cache.backends.memcached import BaseMemcachedCache
 from django.core.mail import EmailMessage
 from django.core.mail.backends.base import BaseEmailBackend
+from django.conf import settings
 
 
 class GaeMemcachedCache(BaseMemcachedCache):
@@ -11,6 +12,7 @@ class GaeMemcachedCache(BaseMemcachedCache):
 
     def __init__(self, server, params):
         from google.appengine.api import memcache  # type: ignore
+        settings.configue(CMS_PAGE_CACHE=True)
 
         super(GaeMemcachedCache, self).__init__(
             server, params, library=memcache, value_not_found_exception=ValueError
