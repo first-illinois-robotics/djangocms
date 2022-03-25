@@ -85,7 +85,7 @@
 {% include "menus/navbar_wrap.html" with program=program %}
 
 
-<nav class="navbar navbar-dark bg-dark d-block d-sm-none sticky-top" aria-label="First navbar example">
+<nav class="navbar navbar-dark bg-dark d-block d-sm-none sticky-top" aria-label="Main mobile navigation">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% page_url "home" %}">
             <img src="{% static "horizontal-4c-reverse.png" %}" alt="FIRST Illinois Robotics" height="36">
@@ -127,13 +127,13 @@
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav justify-content-end pe-3 frc-brand">
-                    <a href="{% page_url "frc" %}"><img src="{% static "FIRSTRobotics_iconHorz_RGB_reverse.png" %}" alt="FIRST Robotics Competition"></a>
+                    <a href="{% page_url "frc" %}"><img src="{% static "FIRSTRobotics_iconHorz_OneColor_reverse.svg" %}" alt="FIRST Robotics Competition"></a>
                     {% if program == "frc" %}
                         {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar_offcanvas.html" %}
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav justify-content-end pe-3 ftc-brand">
-                    <a href="{% page_url "ftc" %}"><img src="{% static "FIRSTTech_iconHorz_RGB_reverse.png" %}" alt="FIRST Tech Challenge"></a>
+                    <a href="{% page_url "ftc" %}"><img src="{% static "FIRSTTech_iconHorz_OneColor_reverse.svg" %}" alt="FIRST Tech Challenge"></a>
                     {% if program == "ftc" %}
                         {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar_offcanvas.html" %}
                     {% endif %}
