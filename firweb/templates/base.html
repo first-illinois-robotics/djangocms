@@ -50,34 +50,11 @@
 <nav class="program-navigation d-none d-sm-block d-md-block d-lg-block " id="main-program-navigation">
     <div class="container">
         {% spaceless %}
-            <a href="{% page_url "home" %}" class="program-nav-box home-brand" id="main-logo">
-                <img class="brand-logo" src="{% static "horizontal-4c.png" %}" alt="FIRST Illinois Robotics">
-
-            </a>
-
-            <a href="{% page_url "fll-discover" %}" class="program-nav-box flld-brand" id="flld-logo">
-                <img class="fll-logo" src="{% static "FLL-RGB_Discover-vert-one-color-reverse.png" %}"
-                     alt="FIRST LEGO League Discover">
-            </a>
-
-            <a href="{% page_url "fll-explore" %}" class="program-nav-box flle-brand" id="flle-logo">
-                <img class="fll-logo" src="{% static "FLL-RGB_Explore-vert-one-color-reverse.png" %}"
-                     alt="FIRST LEGO League Explore">
-            </a>
-
-            <a href="{% page_url "fll-challenge" %}" class="program-nav-box fllc-brand" id="fllc-logo">
-                <img class="fll-logo" src="{% static "FLL-RGB_Challenge-vert-one-color-reverse.png" %}"
-                     alt="FIRST LEGO League Challenge">
-            </a>
-
-            <a href="{% page_url "ftc" %}" class="program-nav-box ftc-brand" id="ftc-logo">
-                <img class="non-fll-logo" src="{% static "FIRSTTech_Type_White.png" %}" alt="FIRST Tech Challenge">
-            </a>
-
-            <a href="{% page_url "frc" %}" class="program-nav-box frc-brand" id="frc-logo">
-                <img class="non-fll-logo" src="{% static "FIRSTRobotics_Type_White.png" %}"
-                     alt="FIRST Robotics Competition">
-            </a>
+            {% for program_name, details in programs.items %}
+                <a href="{% page_url details.url %}" class="program-nav-box {{ program_name }}-brand" id="{{ program_name }}-logo">
+                    <img class="{{ details.extra_img_classes }}" src="{% static details.desktop_img %}" alt="{{ details.full_name }}">
+                </a>
+            {% endfor %}
         {% endspaceless %}
     </div>
 </nav>
@@ -97,16 +74,10 @@
 
         <div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="offcanvasNavbar"
              aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <a href="{% page_url "home" %}" class="offcanvas-title" id="offcanvasNavbarLabel">
-                    <img class="brand-logo" src="{% static "horizontal-4c-reverse.png" %}" alt="FIRST Illinois Robotics">
-                </a>
-                <a type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-times"></i></a>
-            </div>
             <div class="offcanvas-body p-0">
-                <ul class="ms-auto nav nav-pills nav-fill">
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="http://registration.firstillinoisrobotics.org/Login.aspx">Coach Login</a>
+                <ul class="ms-auto nav nav-pills nav-fill flex-row-reverse">
+                    <li class="nav-item d-flex align-items-center ps-1 pe-2">
+                        <a type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-times fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-secondary"
@@ -116,46 +87,22 @@
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="{% page_url "donate" %}">Donate</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="http://registration.firstillinoisrobotics.org/Login.aspx">Coach Login</a>
+                    </li>
                 </ul>
                 <form class="d-flex mb-2 p-2" action="{% page_url "search" %}">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <ul class="navbar-nav justify-content-end pe-3">
-                    {% if program == None %}
-                        {% show_menu_below_id "home" 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav justify-content-end pe-3 frc-brand">
-                    <a href="{% page_url "frc" %}"><img src="{% static "FIRSTRobotics_iconHorz_OneColor_reverse.svg" %}" alt="FIRST Robotics Competition"></a>
-                    {% if program == "frc" %}
-                        {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav justify-content-end pe-3 ftc-brand">
-                    <a href="{% page_url "ftc" %}"><img src="{% static "FIRSTTech_iconHorz_OneColor_reverse.svg" %}" alt="FIRST Tech Challenge"></a>
-                    {% if program == "ftc" %}
-                        {% show_menu_below_id "frc" 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav justify-content-end pe-3 fllc-brand">
-                    <a href="{% page_url "fll-challenge" %}"><img class="fll-logo" src="{% static "FLL-RGB_Challenge-horiz-one-color-reverse.png" %}"
-                         alt="FIRST LEGO League Challenge"></a>
-                    {% if program == "fllc" %}
-                        {% show_menu_below_id "fll-challenge" 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav justify-content-end pe-3 flle-brand">
-                    <a href="{% page_url "fll-explore" %}"><img class="fll-logo" src="{% static "FLL-RGB_Explore-horiz-one-color-reverse.png" %}"
-                                                         alt="FIRST LEGO League Explore"></a>
-                    {% if program == "flle" %}
-                        {% show_menu_below_id "fll-explore" 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav justify-content-end pe-3 flld-brand">
-                    <a href="{% page_url "fll-discover" %}"><img class="fll-logo" src="{% static "FLL-RGB_Discover-horiz-one-color-reverse.png" %}"
-                                                         alt="FIRST LEGO League Discover"></a>
-                </ul>
+                {% for program_name, details in programs.items %}
+                    <ul class="navbar-nav justify-content-end pe-3 {{ program_name }}-brand">
+                        <a href="{% page_url details.url %}"><img class="{{ details.extra_img_classes }}" src="{% static details.mobile_img %}" alt="{{ details.full_name }}"></a>
+                        {% if details.current %}
+                            {% show_menu_below_id details.url 0 100 100 100 "menus/navbar_offcanvas.html" %}
+                        {% endif %}
+                    </ul>
+                {% endfor %}
             </div>
         </div>
     </div>
