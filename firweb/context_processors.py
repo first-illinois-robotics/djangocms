@@ -2,11 +2,12 @@ from django.http import HttpRequest
 
 
 def program(request: HttpRequest):
+    # TODO: Replace all of these with SVGs
     program_info = {
         "home": {
             "internal_name": "home",
             "desktop_img": "horizontal-4c.png",
-            "mobile_img": "horizontal-4c-reverse.png",
+            "mobile_img": "horizontal-4c.png",
             "full_name": "FIRST Illinois Robotics",
             "extra_img_classes": "brand-logo",
             "url": "home"
@@ -57,16 +58,15 @@ def program(request: HttpRequest):
     for program in program_info.keys():
         if request.path.startswith("/" + program_info[program]["url"]):
             current_program = program
-            program_info[program]["current"] = True
+            program_info[program]["current"] = "current"
         else:
-            program_info[program]["current"] = False
+            program_info[program]["current"] = ""
 
     if current_program is None:
-        program_info["home"]["current"] = True
+        program_info["home"]["current"] = "current"
 
     return {
-        "programs": program_info,
-        "program": current_program
+        "programs": program_info
     }
 
 

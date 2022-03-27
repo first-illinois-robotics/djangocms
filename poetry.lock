@@ -508,7 +508,7 @@ Django = ">=2.2"
 
 [[package]]
 name = "djangocms-admin-style"
-version = "3.0.0"
+version = "3.1.0"
 description = "Adds pretty CSS styles for the django CMS admin interface."
 category = "main"
 optional = false
@@ -1214,7 +1214,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-requests"
-version = "2.27.14"
+version = "2.27.15"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -1295,7 +1295,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <4"
-content-hash = "259815fe49e62e23b0659817de579596637ef3920027788d71f2b7e2afab227d"
+content-hash = "0c4c9569e808131b07dccadfe23e2808a6c9ceb204c07261a12285f6e101d918"
 
 [metadata.files]
 aldryn-boilerplates = [
@@ -1463,8 +1463,8 @@ django-treebeard = [
     {file = "django_treebeard-4.5.1-py3-none-any.whl", hash = "sha256:7c2b1cdb1e9b46d595825186064a1228bc4d00dbbc186db5b0b9412357fba91c"},
 ]
 djangocms-admin-style = [
-    {file = "djangocms-admin-style-3.0.0.tar.gz", hash = "sha256:26cb361907d5b0d8fb08547129ac04711db2e04ca8bda8d11848633760d52a89"},
-    {file = "djangocms_admin_style-3.0.0-py3-none-any.whl", hash = "sha256:8a9c0c14952f1d4b7daaab8cb8f8503fa24de99556bd86e4aa1c6a83638f0781"},
+    {file = "djangocms-admin-style-3.1.0.tar.gz", hash = "sha256:8a82f7e92d69984f34b8d965991b09c4ce749bc9d6e684b5f3cbc767a85e590f"},
+    {file = "djangocms_admin_style-3.1.0-py3-none-any.whl", hash = "sha256:e8003d506861eae9f420346064f1eedc3c6654b56d7c8b9d1576ad391d47609f"},
 ]
 djangocms-attributes-field = [
     {file = "djangocms-attributes-field-2.0.0.tar.gz", hash = "sha256:525f1a94de38c446e2746ff307dbc0ec7b157ca1e10c1350bc43b3eace9065d6"},
@@ -2059,8 +2059,8 @@ types-pyyaml = [
     {file = "types_PyYAML-6.0.5-py3-none-any.whl", hash = "sha256:2fd21310870addfd51db621ad9f3b373f33ee3cbb81681d70ef578760bd22d35"},
 ]
 types-requests = [
-    {file = "types-requests-2.27.14.tar.gz", hash = "sha256:04579ee164f7c2659be46950e3c2f8d51a081ad252ef1b01d4b12faba5c3810b"},
-    {file = "types_requests-2.27.14-py3-none-any.whl", hash = "sha256:c01838abfe3e8a83ba68346cd373afff97594c19c15c922ddee4a0e80ba7e329"},
+    {file = "types-requests-2.27.15.tar.gz", hash = "sha256:2d371183c535208d2cc8fe7473d9b49c344c7077eb70302eb708638fb86086a8"},
+    {file = "types_requests-2.27.15-py3-none-any.whl", hash = "sha256:77d09182a68e447e9e8b0ffc21abf54618b96f07689dffbb6a41cf0356542969"},
 ]
 types-urllib3 = [
     {file = "types-urllib3-1.26.11.tar.gz", hash = "sha256:24d64e441168851eb05f1d022de18ae31558f5649c8f1117e384c2e85e31315b"},

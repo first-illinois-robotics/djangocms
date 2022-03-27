@@ -109,7 +109,7 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 {% for program_name, details in programs.items %}
-                    <ul class="navbar-nav justify-content-end pe-3 {{ program_name }}-brand">
+                    <ul class="navbar-nav  {{ program_name }}-brand">
                         <a href="{% page_url details.url %}"><img class="{{ details.extra_img_classes }}"
                                                                   src="{% static details.mobile_img %}"
                                                                   alt="{{ details.full_name }}"></a>

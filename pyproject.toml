@@ -7,7 +7,7 @@ authors = ["FIRST Illinois Robotics <it@firstillinoisrobotics.org>"]
 [tool.poetry.dependencies]
 python = ">=3.9, <4"
 django-cms = ">=3.9,<3.11"
-djangocms-admin-style = "3.0"
+djangocms-admin-style = "3.1.0"
 django-treebeard = ">=4.0,<5.0"
 djangocms-text-ckeditor = ">=4.0,<5.1"
 djangocms-link = ">=3.0,<4.0"

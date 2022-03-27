@@ -18,6 +18,15 @@ $program-colors: (
 );
 
 // mobile overflow
+.brand-opener {
+  background-image: svg("./fir_mobile_open.svg");display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
 
 .offcanvas-body {
 
@@ -50,22 +59,8 @@ $program-colors: (
 
 }
 
-.offcanvas-title {
-  img {
-    height: 1.5em;
-    width: auto;
-  }
-}
 
-.brand-opener {
-  background-image: svg("./fir_mobile_open.svg");display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-}
+// desktop nav
 
 .program-navigation {
   background-color: $first-grey;
