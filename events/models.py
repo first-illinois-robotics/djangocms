@@ -1,3 +1,4 @@
+from cms.models.fields import PlaceholderField
 from django.db import models
 
 
@@ -26,16 +27,25 @@ class Team(models.Model):
         ]
 
 
+class GlobalSeason(models.Model):
+    name = models.TextField(help_text="Season-wide name, like \"FIRST Forward\"", null=True)
+
+
 class Season(models.Model):
     competition = models.IntegerField(
         choices=Competition.choices, default=Competition.UNKNOWN
     )
     # this year is the same one provided by {FRC/FTC}-Events and/or ES02.
     # May not be exactly the year, since seasons span years
-    year = models.IntegerField(null=True)
+    year = models.IntegerField(null=True, help_text="The year as provided by FIRST's own systems. Generally the year "
+                                                    "that kickoff is in.")
+
+    # the global season should be set for all the seasons happening at the same time
+    # i.e. go to te same championship
+    global_season = models.ForeignKey(GlobalSeason, on_delete=models.SET_NULL, null=True)
 
     # determines if data should still be fetched.
-    active = models.BooleanField()
+    active = models.BooleanField(help_text="Determines if data should still be automatically fetched.")
 
     class Meta:
         constraints = [
@@ -46,9 +56,9 @@ class Season(models.Model):
 
 
 class League(models.Model):
-    code = models.TextField()
-    name = models.TextField()
-    location = models.TextField()
+    code = models.CharField(help_text="Gotten straight from FIRST", max_length=50)
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
     parentLeague = models.ForeignKey("self", on_delete=models.CASCADE)
 
@@ -58,13 +68,13 @@ class TeamYear(models.Model):
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
     leagues = models.ManyToManyField(League)
 
-    nickname = models.TextField(max_length=100, null=True)
-    fullname = models.TextField()
-    website = models.TextField(null=True)
+    nickname = models.CharField(max_length=100, null=True)
+    fullname = models.TextField(help_text="Full team name including sponsors")
+    website = models.CharField(null=True, max_length=100)
 
-    city = models.TextField(blank=True)
-    state = models.TextField(blank=True)
-    country = models.TextField(blank=True)
+    city = models.CharField(blank=True, max_length=100)
+    state = models.CharField(blank=True, max_length=100)
+    country = models.CharField(blank=True, max_length=100)
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)
 
@@ -74,40 +84,53 @@ class TeamYear(models.Model):
         ]
 
 
+class RegularEvent(models.Model):
+    """For events that happen regularly (i.e. a yearly regional), an easy way of lumping them together"""
+    title = models.TextField()
+    slug = models.SlugField(help_text="Used in URLs")
+
+
 class Event(models.Model):
     class TournamentType(models.IntegerChoices):
         # FRC Types
-        NoneTournamentType = 0
-        Regional = 1
-        DistrictEvent = 3  # IL region doesn't have districts but good idea to be able to store them just in case
-        DistrictChampionship = 4
-        DistrictChampionshipWithLevels = 5
-        DistrictChampionshipDivision = 6
-        ChampionshipSubdivision = 7
-        ChampionshipDivision = 8
-        Championship = 9
-        OffSeason = 10
-        OffSeasonWithAzureSync = 11  # no clue what this is but it's in the docs
+        NoneTournamentType = 0, "FRC None"
+        Regional = 1, "FRC Regional"
+        DistrictEvent = 3, "FRC District"
+        # IL region doesn't have districts but good idea to be able to store them just in case
+        DistrictChampionship = 4, "FRC DCMP"
+        DistrictChampionshipWithLevels = 5, "FRC DCMP With Levels"
+        DistrictChampionshipDivision = 6, "FRC DCMP Sub Division"
+        ChampionshipSubdivision = 7, "FRC Champ Subdivision"
+        ChampionshipDivision = 8, "FRC Champ Division"
+        Championship = 9, "FRC Championship"
+        OffSeason = 10, "FRC Offseason"
+        OffSeasonWithAzureSync = 11, "FRC Offseason With Azure Sync"  # no clue what this is but it's in the docs
 
         # FTC Types (starting from 100)
         # this is undocumented so these are just gathered from the API responses
-        Scrimmage = 100
-        LeagueMeet = 101
-        Qualifier = 102
-        LeagueTournament = 103
-        FTCChampionship = 104
-        Other = 105
-        FTC_FIRSTChampionship = 106
-        SuperQualifier = 107
+        Scrimmage = 100, "FTC Scrimmage"
+        LeagueMeet = 101, "FTC League Meet"
+        Qualifier = 102, "FTC Qualifier"
+        LeagueTournament = 103, "FTC League Tournament"
+        FTCChampionship = 104, "FTC (local) Championship"
+        Other = 105, "FTC Other"
+        FTC_FIRSTChampionship = 106, "FTC Championship"
+        SuperQualifier = 107, "FTC Super Qualifier"
         # 108???
-        InnovationChallenge = 109
-        FTC_OffSeason = 110
+        InnovationChallenge = 109, "FTC Innovation Challenge"
+        FTC_OffSeason = 110, "FTC Off Season"
 
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
     league = models.ForeignKey(League, on_delete=models.PROTECT, null=True)
 
+    slug = models.SlugField(help_text="Used in URLs")
+
     # this is the Official event key per FIRST, without the year
-    key = models.TextField()
+    official_key = models.CharField(help_text="Official event key from FIRST", max_length=20)
+    # alternate keys for third party sites
+    es02_key = models.CharField(null=True, max_length=20)
+    tba_key = models.CharField(null=True, max_length=10)
+    toa_key = models.CharField(null=True, max_length=15)
 
     tournamentType = models.IntegerField(choices=TournamentType.choices)
 
@@ -116,3 +139,35 @@ class Event(models.Model):
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)
     teams = models.ManyToManyField(TeamYear)
+
+    class PageLayoutTypes(models.IntegerChoices):
+        Tabbed = 0
+        Pages = 1
+    pageType = models.IntegerField(choices=PageLayoutTypes.choices, default=PageLayoutTypes.Tabbed)
+
+    regular_event = models.ForeignKey(RegularEvent, on_delete=models.SET_NULL, null=True,
+                                      help_text="Used for a repeating event.")
+
+
+class Award(models.Model):
+    name = models.CharField(max_length=100)
+    team = models.ForeignKey(TeamYear, on_delete=models.PROTECT)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    individual = models.CharField(null=True, help_text="For individual awards like Dean's List", max_length=100)
+
+
+class EventPage(models.Model):
+    def get_placeholder_name(self):
+        return "content_" + self.slug
+
+    title = models.CharField(max_length=50)
+    slug = models.SlugField()
+    content = PlaceholderField(get_placeholder_name)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+    class PageTypes(models.IntegerChoices):
+        Custom = 0
+        Teams = 1
+        Awards = 2
+
+    pageType = models.IntegerField(choices=PageTypes.choices, default=PageTypes.Custom)
