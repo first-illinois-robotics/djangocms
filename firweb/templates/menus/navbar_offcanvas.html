@@ -2,9 +2,8 @@
 
 {% spaceless %}
     {% for child in children %}
-        <li class="list-group-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
             {% if child.is_leaf_node %}
-                <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                <a class="list-group-item list-group-item-action{% if child.selected or child.ancestor %} active{% endif %} text-decoration-none text-dark" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
                     {{ child.get_menu_title|safe }}
                 </a>
             {% else %}
@@ -24,6 +23,5 @@
                     </a>
                 {% endfor %}
             {% endif %}
-        </li>
     {% endfor %}
 {% endspaceless %}

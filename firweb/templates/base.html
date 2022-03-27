@@ -86,30 +86,32 @@
         <div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="offcanvasNavbar"
              aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-body p-0">
-                <ul class="ms-auto nav nav-pills nav-fill flex-row-reverse">
-                    <li class="nav-item d-flex align-items-center ps-1 pe-2">
+                <div class="ms-auto nav nav-pills nav-fill flex-row-reverse align-items-center">
+                    <div class="d-flex align-items-center ps-1 pe-2">
                         <a type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                                class="fas fa-times fa-lg"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary"
-                           href="https://registration.firstillinoisrobotics.org/Consent.aspx?ConsentID=0&TeamID=0">Consent
-                            Form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{% page_url "donate" %}">Donate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary"
-                           href="http://registration.firstillinoisrobotics.org/Login.aspx">Coach Login</a>
-                    </li>
-                </ul>
+                                class="fas fa-times fa-lg m-3"></i></a>
+                    </div>
+                    <ul class="nav nav-pills nav-fill flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary"
+                               href="https://registration.firstillinoisrobotics.org/Consent.aspx?ConsentID=0&TeamID=0">Consent
+                                Form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="{% page_url "donate" %}">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary"
+                               href="http://registration.firstillinoisrobotics.org/Login.aspx">Coach Login</a>
+                        </li>
+                    </ul>
+                </div>
                 <form class="d-flex mb-2 p-2" action="{% page_url "search" %}">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 {% for program_name, details in programs.items %}
-                    <ul class="navbar-nav  {{ program_name }}-brand">
+                    <div class="navbar-nav  {{ program_name }}-brand text-dark" >
                         <a class="overflow-program-header" data-bs-toggle="collapse" href="#{{ program_name }}-mobile">
                             <img class="{{ details.extra_img_classes }}"
                                       src="{% static details.mobile_img %}"
@@ -118,13 +120,13 @@
                             <i class="fas fa-chevron-down mobile-accordion-control {{ program_name }}-mobile-indicator {% if details.current %}rotated{% endif %}"></i>
                         </a>
                         <div class="collapse overflow-program-header-target {% if details.current %}show{% endif %}" id="{{ program_name }}-mobile">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a class="nav-link" href="{% page_url details.url %}">{{ details.full_name }}</a></li>
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item list-group-item-action" href="{% page_url details.url %}">{{ details.full_name }}</a>
                                 {% show_menu_below_id details.url 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                            </ul>
+                            </div>
                         </div>
 
-                    </ul>
+                    </div>
                 {% endfor %}
             </div>
         </div>

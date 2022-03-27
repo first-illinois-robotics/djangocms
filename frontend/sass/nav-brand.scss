@@ -33,13 +33,13 @@ $program-colors: (
     .#{$name}-brand {
       background-color: $value;
 
-      .nav-link {
-        color: tint-color(color-contrast($value), 20%);
-      }
-
-      .nav-link:hover, .nav-item.active>.nav-link {
-        color: tint-color(color-contrast($value), 0%);
-      }
+      //.nav-link {
+      //  color: tint-color(color-contrast($value), 20%);
+      //}
+      //
+      //.nav-link:hover, .nav-item.active>.nav-link {
+      //  color: tint-color(color-contrast($value), 0%);
+      //}
     }
   }
   .overflow-program-header {
@@ -75,6 +75,10 @@ $program-colors: (
         transform: rotate(180deg);
         transition: transform 1s linear;
       }
+    }
+
+    ul {
+      color: black;
     }
   }
 
