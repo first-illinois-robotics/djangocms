@@ -7,6 +7,5 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 import "../sass/index.scss";
 
-// disabled for now to try out differing nav styles
-// import "./nav-switch.ts";
+import "./mobile-nav"
 import "./donate.ts"

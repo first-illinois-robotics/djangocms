@@ -2,7 +2,7 @@
 
 {% spaceless %}
     {% for child in children %}
-        <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+        <li class="list-group-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
             {% if child.is_leaf_node %}
                 <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
                     {{ child.get_menu_title|safe }}

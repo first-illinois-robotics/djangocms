@@ -110,12 +110,20 @@
                 </form>
                 {% for program_name, details in programs.items %}
                     <ul class="navbar-nav  {{ program_name }}-brand">
-                        <a href="{% page_url details.url %}"><img class="{{ details.extra_img_classes }}"
-                                                                  src="{% static details.mobile_img %}"
-                                                                  alt="{{ details.full_name }}"></a>
-                        {% if details.current %}
-                            {% show_menu_below_id details.url 0 100 100 100 "menus/navbar_offcanvas.html" %}
-                        {% endif %}
+                        <a class="overflow-program-header" data-bs-toggle="collapse" href="#{{ program_name }}-mobile">
+                            <img class="{{ details.extra_img_classes }}"
+                                      src="{% static details.mobile_img %}"
+                                      alt="{{ details.full_name }}"
+                                        id="{{ program_name }}-mobile-img">
+                            <i class="fas fa-chevron-down mobile-accordion-control {{ program_name }}-mobile-indicator {% if details.current %}rotated{% endif %}"></i>
+                        </a>
+                        <div class="collapse overflow-program-header-target {% if details.current %}show{% endif %}" id="{{ program_name }}-mobile">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a class="nav-link" href="{% page_url details.url %}">{{ details.full_name }}</a></li>
+                                {% show_menu_below_id details.url 0 100 100 100 "menus/navbar_offcanvas.html" %}
+                            </ul>
+                        </div>
+
                     </ul>
                 {% endfor %}
             </div>

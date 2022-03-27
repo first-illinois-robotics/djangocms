@@ -29,7 +29,6 @@ $program-colors: (
 }
 
 .offcanvas-body {
-
   @each $name, $value in $program-colors {
     .#{$name}-brand {
       background-color: $value;
@@ -43,19 +42,42 @@ $program-colors: (
       }
     }
   }
-
-  img {
+  .overflow-program-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 100%;
-    width: auto;
-    height: 45px;
-    display: block;
-    margin: 1em auto 1em 1em;
+
+    img {
+      width: auto;
+      max-width: 100%;
+      min-width: 0;
+      height: 45px;
+      display: block;
+      margin: 1em auto 1em 1em;
+      flex-shrink: 1;
+    }
+
+    .fll-logo {
+      max-height: 70px;
+      height: unset;
+      margin: 0.25em auto 0.25em 0.25em;
+    }
+
+    .mobile-accordion-control {
+      color: black;
+      margin: 1em;
+      flex-shrink: 0;
+      transform: rotate(0deg);
+      transition: transform 1s linear;
+
+      &.rotated {
+        transform: rotate(180deg);
+        transition: transform 1s linear;
+      }
+    }
   }
 
-  .fll-logo {
-    height: 70px;
-    margin: 0.25em auto 0.25em 0.25em;
-  }
 
 }
 
