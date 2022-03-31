@@ -1,21 +1,23 @@
+from aldryn_apphooks_config.fields import AppHookConfigField
+from aldryn_apphooks_config.managers import AppHookConfigManager
 from cms.models.fields import PlaceholderField
 from django.db import models
+from django.db.models import Q, F
+from .cms_appconfig import EventConfig, RegularEventConfig
+from .competitions import Competition
 
 
-class Competition(models.TextChoices):
-    UNKNOWN = "UK", "Unknown"
-    FRC = "FRC", "FIRST Robotics Competition"
-    FTC = "FTC", "FIRST Tech Challenge"
-    FLLC = "FLLC", "FIRST LEGO League Challenge"
-    FLLE = "FLLE", "FIRST LEGO League Explore"
-    FLLD = "FLLD", "FIRST LEGO League Discover"
+class PageLayoutTypes(models.IntegerChoices):
+    """Page layout types for event pages"""
+    Tabbed = 0
+    Pages = 1
 
 
 class Team(models.Model):
     # This does NOT store team information, just simply a class for everything else to point to
     # You're likely looking for TeamYear down below
-    competition = models.IntegerField(
-        choices=Competition.choices, default=Competition.UNKNOWN
+    competition = models.CharField(
+        choices=Competition.choices, default=Competition.UNKNOWN, max_length=4
     )
     team_num = models.IntegerField(null=True)
 
@@ -32,8 +34,8 @@ class GlobalSeason(models.Model):
 
 
 class Season(models.Model):
-    competition = models.IntegerField(
-        choices=Competition.choices, default=Competition.UNKNOWN
+    competition = models.CharField(
+        choices=Competition.choices, default=Competition.UNKNOWN, max_length=4
     )
     # this year is the same one provided by {FRC/FTC}-Events and/or ES02.
     # May not be exactly the year, since seasons span years
@@ -88,6 +90,8 @@ class RegularEvent(models.Model):
     """For events that happen regularly (i.e. a yearly regional), an easy way of lumping them together"""
     title = models.TextField()
     slug = models.SlugField(help_text="Used in URLs")
+    app_config = AppHookConfigField(RegularEventConfig, null=True)
+    objects = AppHookConfigManager()
 
 
 class Event(models.Model):
@@ -134,19 +138,18 @@ class Event(models.Model):
 
     tournamentType = models.IntegerField(choices=TournamentType.choices)
 
+    regular_event = models.ForeignKey(RegularEvent, on_delete=models.SET_NULL, null=True,
+                                      help_text="Used for a repeating event.")
     start_date = models.DateField()
     end_date = models.DateField()
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)
     teams = models.ManyToManyField(TeamYear)
 
-    class PageLayoutTypes(models.IntegerChoices):
-        Tabbed = 0
-        Pages = 1
+    # Apphook/display stuff
     pageType = models.IntegerField(choices=PageLayoutTypes.choices, default=PageLayoutTypes.Tabbed)
-
-    regular_event = models.ForeignKey(RegularEvent, on_delete=models.SET_NULL, null=True,
-                                      help_text="Used for a repeating event.")
+    app_config = AppHookConfigField(EventConfig, null=True)
+    objects = AppHookConfigManager()
 
 
 class Award(models.Model):

@@ -1,16 +1,27 @@
+from aldryn_apphooks_config.admin import BaseAppHookConfig
 from cms.admin.placeholderadmin import PlaceholderAdminMixin
 from django.contrib import admin
+
 from .models import *
 
 # Register your models here.
 admin.site.register(League)
 
 
-@admin.register(GlobalSeason)
-class GlobalSeasonAdmin(admin.ModelAdmin):
-    # hide in the side bar (really just need to be edited through Season)
+class HideSidebarMixin:
+    # hide in the side bar if just needs to be editable elsewhere
     def has_module_permission(self, request):
         return False
+
+
+@admin.register(GlobalSeason)
+class GlobalSeasonAdmin(HideSidebarMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(RegularEvent)
+class RegularEventAdmin(HideSidebarMixin, admin.ModelAdmin):
+    pass
 
 
 @admin.register(Season)
@@ -46,3 +57,13 @@ class EventAdmin(admin.ModelAdmin):
         EventPageAdmin,
         AwardAdmin
     ]
+
+
+@admin.register(EventConfig)
+class EventConfigAdmin(HideSidebarMixin, BaseAppHookConfig, admin.ModelAdmin):
+    pass
+
+
+@admin.register(RegularEventConfig)
+class RegularEventConfigAdmin(HideSidebarMixin, BaseAppHookConfig, admin.ModelAdmin):
+    pass

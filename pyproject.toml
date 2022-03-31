@@ -34,7 +34,7 @@ google-cloud-secret-manager = "2.9.2"
 mysqlclient = "^2.1"
 google-cloud-storage = "2.2.1"
 google-cloud-logging = "3.0"
-appengine-python-standard = "0.3.1"
+appengine-python-standard = "1.0.0"
 # fix for compatability with django 3.2
 aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0a52d4c"  }
 Whoosh = "^2.7.4"
@@ -42,12 +42,13 @@ aldryn-common = "^1.0.5"
 requests = "^2.27.0"
 django-google-tag-manager = "0.0.5"
 django-cors-headers = "3.11"
+aldryn-apphooks-config = "0.6.0"
 
 [tool.poetry.dev-dependencies]
-black = "22.1"
+black = "22.3"
 django-livereload-server = "0.4"
 mypy = "0.942"
-django-stubs = "^1.10.0"
+django-stubs = "^1.10.1"
 types-requests = "^2.26.3"
 
 [build-system]
