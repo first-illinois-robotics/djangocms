@@ -10,7 +10,7 @@ def program(request: HttpRequest):
             "mobile_img": "horizontal-4c.png",
             "full_name": "FIRST Illinois Robotics",
             "extra_img_classes": "brand-logo",
-            "url": "home"
+            "url": "home",
         },
         "flld": {
             "internal_name": "flld",
@@ -18,7 +18,7 @@ def program(request: HttpRequest):
             "mobile_img": "FLL-RGB_Discover-horiz-one-color-reverse.png",
             "full_name": "FIRST LEGO League Discover",
             "extra_img_classes": "fll-logo",
-            "url": "fll-discover"
+            "url": "fll-discover",
         },
         "flle": {
             "internal_name": "flle",
@@ -26,7 +26,7 @@ def program(request: HttpRequest):
             "mobile_img": "FLL-RGB_Explore-horiz-one-color-reverse.png",
             "full_name": "FIRST LEGO League Explore",
             "extra_img_classes": "fll-logo",
-            "url": "fll-explore"
+            "url": "fll-explore",
         },
         "fllc": {
             "internal_name": "fllc",
@@ -34,7 +34,7 @@ def program(request: HttpRequest):
             "mobile_img": "FLL-RGB_Challenge-horiz-one-color-reverse.png",
             "full_name": "FIRST LEGO League Challenge",
             "extra_img_classes": "fll-logo",
-            "url": "fll-challenge"
+            "url": "fll-challenge",
         },
         "ftc": {
             "internal_name": "ftc",
@@ -42,7 +42,7 @@ def program(request: HttpRequest):
             "mobile_img": "FIRSTTech_iconHorz_OneColor_reverse.svg",
             "full_name": "FIRST Tech Challenge",
             "extra_img_classes": "non-fll-logo",
-            "url": "ftc"
+            "url": "ftc",
         },
         "frc": {
             "internal_name": "frc",
@@ -50,7 +50,7 @@ def program(request: HttpRequest):
             "mobile_img": "FIRSTRobotics_iconHorz_OneColor_reverse.svg",
             "full_name": "FIRST Robotics Competition",
             "extra_img_classes": "non-fll-logo",
-            "url": "frc"
+            "url": "frc",
         },
     }
 
@@ -65,8 +65,4 @@ def program(request: HttpRequest):
     if current_program is None:
         program_info["home"]["current"] = "current"
 
-    return {
-        "programs": program_info
-    }
-
-
+    return {"programs": program_info}

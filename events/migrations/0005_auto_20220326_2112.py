@@ -6,23 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0004_auto_20220326_2108'),
+        ("events", "0004_auto_20220326_2108"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='event',
-            name='tba_key',
+            model_name="event",
+            name="tba_key",
             field=models.CharField(max_length=10, null=True),
         ),
         migrations.AlterField(
-            model_name='event',
-            name='toa_key',
+            model_name="event",
+            name="toa_key",
             field=models.CharField(max_length=15, null=True),
         ),
         migrations.AlterField(
-            model_name='season',
-            name='year',
-            field=models.IntegerField(help_text="The year as provided by FIRST's own systems. Generally the year that kickoff is in.", null=True),
+            model_name="season",
+            name="year",
+            field=models.IntegerField(
+                help_text="The year as provided by FIRST's own systems. Generally the year that kickoff is in.",
+                null=True,
+            ),
         ),
     ]

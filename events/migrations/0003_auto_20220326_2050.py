@@ -9,80 +9,150 @@ import events.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '0022_auto_20180620_1551'),
-        ('events', '0002_alter_event_teams'),
+        ("cms", "0022_auto_20180620_1551"),
+        ("events", "0002_alter_event_teams"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='GlobalSeason',
+            name="GlobalSeason",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='RegularEvent',
+            name="RegularEvent",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.TextField()),
-                ('slug', models.SlugField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.TextField()),
+                ("slug", models.SlugField()),
             ],
         ),
         migrations.RenameField(
-            model_name='event',
-            old_name='key',
-            new_name='official_key',
+            model_name="event",
+            old_name="key",
+            new_name="official_key",
         ),
         migrations.AddField(
-            model_name='event',
-            name='pageType',
-            field=models.IntegerField(choices=[(0, 'Tabbed'), (1, 'Pages')], default=0),
+            model_name="event",
+            name="pageType",
+            field=models.IntegerField(choices=[(0, "Tabbed"), (1, "Pages")], default=0),
         ),
         migrations.AddField(
-            model_name='event',
-            name='slug',
-            field=models.SlugField(default=''),
+            model_name="event",
+            name="slug",
+            field=models.SlugField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='event',
-            name='tba_key',
+            model_name="event",
+            name="tba_key",
             field=models.TextField(null=True),
         ),
         migrations.AddField(
-            model_name='event',
-            name='toa_key',
+            model_name="event",
+            name="toa_key",
             field=models.TextField(null=True),
         ),
         migrations.CreateModel(
-            name='EventPage',
+            name="EventPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.TextField()),
-                ('slug', models.SlugField()),
-                ('pageType', models.IntegerField(choices=[(0, 'Blank'), (1, 'Teams'), (2, 'Awards')], default=0)),
-                ('content', cms.models.fields.PlaceholderField(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, slotname=events.models.EventPage.get_placeholder_name, to='cms.placeholder')),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.event')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.TextField()),
+                ("slug", models.SlugField()),
+                (
+                    "pageType",
+                    models.IntegerField(
+                        choices=[(0, "Blank"), (1, "Teams"), (2, "Awards")], default=0
+                    ),
+                ),
+                (
+                    "content",
+                    cms.models.fields.PlaceholderField(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        slotname=events.models.EventPage.get_placeholder_name,
+                        to="cms.placeholder",
+                    ),
+                ),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="events.event"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Award',
+            name="Award",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField()),
-                ('individual', models.TextField()),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.event')),
-                ('team', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='events.teamyear')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField()),
+                ("individual", models.TextField()),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="events.event"
+                    ),
+                ),
+                (
+                    "team",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="events.teamyear",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='event',
-            name='regular_event',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='events.regularevent'),
+            model_name="event",
+            name="regular_event",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="events.regularevent",
+            ),
         ),
         migrations.AddField(
-            model_name='season',
-            name='global_season',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='events.globalseason'),
+            model_name="season",
+            name="global_season",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="events.globalseason",
+            ),
         ),
     ]

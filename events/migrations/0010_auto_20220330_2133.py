@@ -6,35 +6,68 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0009_auto_20220330_2123'),
+        ("events", "0009_auto_20220330_2123"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='eventconfig',
-            options={'verbose_name': 'Single Event Appconfig'},
+            name="eventconfig",
+            options={"verbose_name": "Single Event Appconfig"},
         ),
         migrations.AlterModelOptions(
-            name='regulareventconfig',
-            options={'verbose_name': 'Regular Event Appconfig'},
+            name="regulareventconfig",
+            options={"verbose_name": "Regular Event Appconfig"},
         ),
         migrations.AlterModelOptions(
-            name='teamconfig',
-            options={'verbose_name': 'Team Listing Appconfig'},
+            name="teamconfig",
+            options={"verbose_name": "Team Listing Appconfig"},
         ),
         migrations.AlterField(
-            model_name='season',
-            name='competition',
-            field=models.CharField(choices=[('UK', 'Unknown'), ('FRC', 'FIRST Robotics Competition'), ('FTC', 'FIRST Tech Challenge'), ('FLLC', 'FIRST LEGO League Challenge'), ('FLLE', 'FIRST LEGO League Explore'), ('FLLD', 'FIRST LEGO League Discover')], default='UK', max_length=4),
+            model_name="season",
+            name="competition",
+            field=models.CharField(
+                choices=[
+                    ("UK", "Unknown"),
+                    ("FRC", "FIRST Robotics Competition"),
+                    ("FTC", "FIRST Tech Challenge"),
+                    ("FLLC", "FIRST LEGO League Challenge"),
+                    ("FLLE", "FIRST LEGO League Explore"),
+                    ("FLLD", "FIRST LEGO League Discover"),
+                ],
+                default="UK",
+                max_length=4,
+            ),
         ),
         migrations.AlterField(
-            model_name='team',
-            name='competition',
-            field=models.CharField(choices=[('UK', 'Unknown'), ('FRC', 'FIRST Robotics Competition'), ('FTC', 'FIRST Tech Challenge'), ('FLLC', 'FIRST LEGO League Challenge'), ('FLLE', 'FIRST LEGO League Explore'), ('FLLD', 'FIRST LEGO League Discover')], default='UK', max_length=4),
+            model_name="team",
+            name="competition",
+            field=models.CharField(
+                choices=[
+                    ("UK", "Unknown"),
+                    ("FRC", "FIRST Robotics Competition"),
+                    ("FTC", "FIRST Tech Challenge"),
+                    ("FLLC", "FIRST LEGO League Challenge"),
+                    ("FLLE", "FIRST LEGO League Explore"),
+                    ("FLLD", "FIRST LEGO League Discover"),
+                ],
+                default="UK",
+                max_length=4,
+            ),
         ),
         migrations.AlterField(
-            model_name='teamconfig',
-            name='competition',
-            field=models.CharField(choices=[('UK', 'Unknown'), ('FRC', 'FIRST Robotics Competition'), ('FTC', 'FIRST Tech Challenge'), ('FLLC', 'FIRST LEGO League Challenge'), ('FLLE', 'FIRST LEGO League Explore'), ('FLLD', 'FIRST LEGO League Discover')], default='UK', max_length=4),
+            model_name="teamconfig",
+            name="competition",
+            field=models.CharField(
+                choices=[
+                    ("UK", "Unknown"),
+                    ("FRC", "FIRST Robotics Competition"),
+                    ("FTC", "FIRST Tech Challenge"),
+                    ("FLLC", "FIRST LEGO League Challenge"),
+                    ("FLLE", "FIRST LEGO League Explore"),
+                    ("FLLD", "FIRST LEGO League Discover"),
+                ],
+                default="UK",
+                max_length=4,
+            ),
         ),
     ]

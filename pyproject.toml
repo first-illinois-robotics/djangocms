@@ -60,11 +60,12 @@ plugins = ["mypy_django_plugin.main"]
 exclude = "migrations.*"
 
 [[tool.mypy.overrides]]
-module = [
-    "google",
-]
+module = "google.*"
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = "cms.*"
+ignore_missing_imports = true
 
 [tool.django-stubs]
 django_settings_module = "firweb.settings"

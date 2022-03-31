@@ -6,58 +6,64 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0006_auto_20220326_2120'),
+        ("events", "0006_auto_20220326_2120"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='award',
-            name='individual',
-            field=models.CharField(help_text="For individual awards like Dean's List", max_length=100, null=True),
+            model_name="award",
+            name="individual",
+            field=models.CharField(
+                help_text="For individual awards like Dean's List",
+                max_length=100,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='award',
-            name='name',
+            model_name="award",
+            name="name",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name='league',
-            name='code',
-            field=models.CharField(help_text='Gotten straight from FIRST', max_length=50),
+            model_name="league",
+            name="code",
+            field=models.CharField(
+                help_text="Gotten straight from FIRST", max_length=50
+            ),
         ),
         migrations.AlterField(
-            model_name='league',
-            name='location',
+            model_name="league",
+            name="location",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name='league',
-            name='name',
+            model_name="league",
+            name="name",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name='teamyear',
-            name='city',
+            model_name="teamyear",
+            name="city",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AlterField(
-            model_name='teamyear',
-            name='country',
+            model_name="teamyear",
+            name="country",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AlterField(
-            model_name='teamyear',
-            name='nickname',
+            model_name="teamyear",
+            name="nickname",
             field=models.CharField(max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='teamyear',
-            name='state',
+            model_name="teamyear",
+            name="state",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AlterField(
-            model_name='teamyear',
-            name='website',
+            model_name="teamyear",
+            name="website",
             field=models.CharField(max_length=100, null=True),
         ),
     ]

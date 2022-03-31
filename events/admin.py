@@ -31,7 +31,7 @@ class SeasonAdmin(admin.ModelAdmin):
 @admin.register(TeamYear)
 class TeamYearAdmin(HideSidebarMixin, admin.ModelAdmin):
     model = TeamYear
-    search_fields = ['team__team_num', 'team__competition', 'nickname']
+    search_fields = ["team__team_num", "team__competition", "nickname"]
 
 
 class TeamYearInlineAdmin(admin.StackedInline):
@@ -41,9 +41,7 @@ class TeamYearInlineAdmin(admin.StackedInline):
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    inlines = [
-        TeamYearInlineAdmin
-    ]
+    inlines = [TeamYearInlineAdmin]
 
 
 class EventPageAdmin(PlaceholderAdminMixin, admin.TabularInline):
@@ -59,11 +57,6 @@ class AwardAdmin(admin.TabularInline):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    inlines = [
-        EventPageAdmin,
-        AwardAdmin
-    ]
+    inlines = [EventPageAdmin, AwardAdmin]
     prepopulated_fields = {"slug": ("name",)}
-    autocomplete_fields = ['teams']
-
-
+    autocomplete_fields = ["teams"]
