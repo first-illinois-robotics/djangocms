@@ -139,6 +139,10 @@ jobs:
           USE_CLOUD_SQL_AUTH_PROXY: true
         run: LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 poetry run python manage.py migrate
 
+      - name: Modify Production app.yaml for 1 minimum instance
+        if: ${{ github.ref == 'refs/heads/prod' }}
+        run: yq -i '.automatic_scaling.min_instances=1' app.yaml
+
       - name: Deploy to Google App Engine
         run: gcloud beta app deploy app.yaml --promote
 
