@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from cms.models.fields import PlaceholderField
 from django.db import models
 from .competitions import Competition
 from .plugin_models import *
+from django.contrib import admin
 
 
 class PageLayoutTypes(models.IntegerChoices):
@@ -29,6 +32,13 @@ class Team(models.Model):
     def __str__(self):
         return f"{self.competition}{self.team_num}"
 
+    def get_latest_teamyear(self) -> TeamYear:
+        return TeamYear.objects.filter(team__id=self.id).latest()
+
+    @admin.display
+    def most_recent_nickname(self):
+        return self.get_latest_teamyear().nickname
+
 
 class GlobalSeason(models.Model):
     name = models.TextField(
@@ -51,7 +61,7 @@ class Season(models.Model):
         "that kickoff is in.",
     )
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     # the global season should be set for all the seasons happening at the same time
     # i.e. go to te same championship
@@ -71,21 +81,19 @@ class Season(models.Model):
             )
         ]
 
-    def save(self, *args, **kwargs):
-        if not self.name:
-            self.name = f"{self.competition} {self.year} Season"
-        super(Season, self).save(*args, **kwargs)
-
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.year})"
 
 
 class League(models.Model):
-    code = models.CharField(help_text="Gotten straight from FIRST", max_length=50)
+    code = models.CharField(help_text="Gotten straight from FIRST", max_length=50, blank=True, null=True)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
-    parentLeague = models.ForeignKey("self", on_delete=models.CASCADE)
+    parentLeague = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class TeamYear(models.Model):
@@ -107,6 +115,7 @@ class TeamYear(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["team", "season"], name="unique_team_year")
         ]
+        get_latest_by = "season__year"
 
     def __str__(self):
         return f"{self.team} {self.season.name} Season ({self.nickname})"

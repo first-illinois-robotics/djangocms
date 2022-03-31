@@ -3,7 +3,7 @@ from cms.apphook_pool import apphook_pool
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import re_path, path, reverse
 from .models import Event, RegularEvent
-from .views.app import app_index_view, app_page_view
+from .views.app import *
 from .competitions import Competition
 
 
@@ -40,8 +40,8 @@ class EventApp(CMSConfigApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            re_path(r"^$", app_index_view, name="index"),
-            path("<slug:slug>/", app_page_view, name="page"),
+            re_path(r"^$", event_index_view, name="event_index"),
+            path("<slug:slug>/", event_page_view, name="event_page"),
         ]
 
 
@@ -53,22 +53,21 @@ class RegularEventApp(CMSConfigApp):
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            re_path(r"^$", app_index_view, name="index"),
-            path("<slug:slug>/", app_page_view, name="page"),
+            re_path(r"^$", event_index_view, name="index"),
+            path("<slug:slug>/", event_page_view, name="page"),
         ]
 
 
 class GenericTeamApp(CMSApp):
-    app_name = "team"
     program = Competition.UNKNOWN
 
     def __init__(self):
         self.name = f"{self.program} Team Listing"
+        self.app_name = self.program
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
-            re_path(r"^$", app_index_view, name="index"),
-            path("<slug:slug>/", app_page_view, name="page"),
+            path("", team_list_view, {"program": self.program}, name="team_list"),
         ]
 
 

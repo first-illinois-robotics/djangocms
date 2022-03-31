@@ -25,7 +25,7 @@ class RegularEventAdmin(HideSidebarMixin, admin.ModelAdmin):
 
 @admin.register(Season)
 class SeasonAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "competition", "year")
 
 
 @admin.register(TeamYear)
@@ -42,6 +42,7 @@ class TeamYearInlineAdmin(admin.StackedInline):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     inlines = [TeamYearInlineAdmin]
+    list_display = ("team_num", "competition", "most_recent_nickname")
 
 
 class EventPageAdmin(PlaceholderAdminMixin, admin.TabularInline):
@@ -60,3 +61,4 @@ class EventAdmin(admin.ModelAdmin):
     inlines = [EventPageAdmin, AwardAdmin]
     prepopulated_fields = {"slug": ("name",)}
     autocomplete_fields = ["teams"]
+    list_display = ("name", "season")

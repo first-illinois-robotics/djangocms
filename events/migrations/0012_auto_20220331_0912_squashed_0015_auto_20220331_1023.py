@@ -6,12 +6,12 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    replaces = [
-        ("events", "0012_auto_20220331_0912"),
-        ("events", "0013_event_name"),
-        ("events", "0014_auto_20220331_1010"),
-        ("events", "0015_auto_20220331_1023"),
-    ]
+    # replaces = [
+    #     ("events", "0012_auto_20220331_0912"),
+    #     ("events", "0013_event_name"),
+    #     ("events", "0014_auto_20220331_1010"),
+    #     ("events", "0015_auto_20220331_1023"),
+    # ]
 
     dependencies = [
         ("events", "0011_delete_teamconfig"),
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="season",
             name="name",
-            field=models.CharField(default="Unknown", max_length=100),
+            field=models.CharField(default="Unknown", max_length=100, null=True),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -39,6 +39,7 @@ class Migration(migrations.Migration):
             field=models.CharField(
                 help_text="Do not include the year/season in this, as it will beautomatically added from the season above.",
                 max_length=100,
+                default="Unknown Event"
             ),
         ),
         migrations.CreateModel(
