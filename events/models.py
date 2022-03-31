@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from cms.models.fields import PlaceholderField
+from computedfields.models import computed, ComputedFieldsModel
 from django.db import models
 from .competitions import Competition
 from .plugin_models import *
@@ -121,7 +122,7 @@ class TeamYear(models.Model):
         return f"{self.team} {self.season.name} Season ({self.nickname})"
 
 
-class RegularEvent(models.Model):
+class RegularEvent(ComputedFieldsModel):
     """For events that happen regularly (i.e. a yearly regional), an easy way of lumping them together"""
 
     title = models.TextField()
@@ -130,8 +131,12 @@ class RegularEvent(models.Model):
     def __str__(self):
         return f"{self.title} ({self.slug})"
 
+    @computed(models.CharField(max_length=50, default=""), depends=[['self', ['slug']]])
+    def namespace(self):
+        return f"regular_{self.slug.lower()}"
 
-class Event(models.Model):
+
+class Event(ComputedFieldsModel):
     class TournamentType(models.IntegerChoices):
         # FRC Types
         NoneTournamentType = 0, "FRC None"
@@ -189,7 +194,7 @@ class Event(models.Model):
         RegularEvent,
         on_delete=models.SET_NULL,
         null=True,
-        help_text="Used for a repeating event.",
+        help_text="Used for a repeating event. MUST be one event per season.",
     )
     start_date = models.DateField()
     end_date = models.DateField()
@@ -203,6 +208,10 @@ class Event(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.season})"
+
+    @computed(models.CharField(max_length=50, default=""), depends=[['self', ['slug']]])
+    def namespace(self):
+        return self.slug.lower()
 
 
 class Award(models.Model):

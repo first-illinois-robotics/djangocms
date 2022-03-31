@@ -171,7 +171,7 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
-version = "8.1.1"
+version = "8.1.2"
 description = "Composable command line interface toolkit"
 category = "dev"
 optional = false
@@ -270,6 +270,14 @@ django-formtools = ">=2.1"
 django-sekizai = ">=0.7"
 django-treebeard = ">=4.3"
 djangocms-admin-style = ">=1.2"
+
+[[package]]
+name = "django-computedfields"
+version = "0.1.7"
+description = "autoupdated database fields for model methods"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "django-cors-headers"
@@ -1319,7 +1327,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <4"
-content-hash = "feb0a4e8b2ded900381c5f2a848a8082397a9e91fda5006b0e01a9cd4130dd05"
+content-hash = "7244cbd16bd67b48664bb80125d9e8c27c54bb2487a11d80b9197dfa17c02943"
 
 [metadata.files]
 aldryn-apphooks-config = [
@@ -1387,8 +1395,8 @@ charset-normalizer = [
     {file = "charset_normalizer-2.0.12-py3-none-any.whl", hash = "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"},
 ]
 click = [
-    {file = "click-8.1.1-py3-none-any.whl", hash = "sha256:5e0d195c2067da3136efb897449ec1e9e6c98282fbf30d7f9e164af9be901a6b"},
-    {file = "click-8.1.1.tar.gz", hash = "sha256:7ab900e38149c9872376e8f9b5986ddcaf68c0f413cf73678a0bca5547e6f976"},
+    {file = "click-8.1.2-py3-none-any.whl", hash = "sha256:24e1a4a9ec5bf6299411369b208c1df2188d9eb8d916302fe6bf03faed227f1e"},
+    {file = "click-8.1.2.tar.gz", hash = "sha256:479707fe14d9ec9a0757618b7a100a0ae4c4e236fac5b7f80ca68028141a1a72"},
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
@@ -1416,6 +1424,9 @@ django-classy-tags = [
 ]
 django-cms = [
     {file = "django_cms-3.10.0-py2.py3-none-any.whl", hash = "sha256:372e7b51a5336714d39c6eed062bddb3ad6e6c61a3a685a2c246cef183c3d85f"},
+]
+django-computedfields = [
+    {file = "django-computedfields-0.1.7.tar.gz", hash = "sha256:577aeca5e0230277a9e2cf899f3f5cac368c3360e576a0190b5ca3e78d96f896"},
 ]
 django-cors-headers = [
     {file = "django-cors-headers-3.11.0.tar.gz", hash = "sha256:eb98389bf7a2afc5d374806af4a9149697e3a6955b5a2dc2bf049f7d33647456"},

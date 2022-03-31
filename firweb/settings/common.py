@@ -134,7 +134,7 @@ INSTALLED_APPS = [
     "haystack",
     "aldryn_common",
     "aldryn_search",
-    "aldryn_apphooks_config",
+    "computedfields",
     "standard_form",
     "spurl",
     "gtm",
