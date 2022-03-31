@@ -1,8 +1,8 @@
 from aldryn_apphooks_config.app_base import CMSConfigApp
 from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
-from .cms_appconfig import EventConfig, RegularEventConfig
 from django.urls import re_path, path
+from .models import Event, RegularEvent
 from .views.app import app_index_view, app_page_view
 from .competitions import Competition
 
@@ -11,7 +11,7 @@ from .competitions import Competition
 class EventApp(CMSConfigApp):
     name = "Single Event Listing"
     app_name = "event"
-    app_config = EventConfig
+    app_config = Event
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [
@@ -24,7 +24,7 @@ class EventApp(CMSConfigApp):
 class RegularEventApp(CMSConfigApp):
     name = "Regular Event Listing"
     app_name = "regular_event"
-    app_config = RegularEventConfig
+    app_config = RegularEvent
 
     def get_urls(self, page=None, language=None, **kwargs):
         return [

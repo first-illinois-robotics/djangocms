@@ -1,4 +1,3 @@
-from aldryn_apphooks_config.admin import BaseAppHookConfig
 from cms.admin.placeholderadmin import PlaceholderAdminMixin
 from django.contrib import admin
 
@@ -21,7 +20,7 @@ class GlobalSeasonAdmin(HideSidebarMixin, admin.ModelAdmin):
 
 @admin.register(RegularEvent)
 class RegularEventAdmin(HideSidebarMixin, admin.ModelAdmin):
-    pass
+    prepopulated_fields = {"slug": ("title",)}
 
 
 @admin.register(Season)
@@ -29,7 +28,13 @@ class SeasonAdmin(admin.ModelAdmin):
     pass
 
 
-class TeamYearAdmin(PlaceholderAdminMixin, admin.StackedInline):
+@admin.register(TeamYear)
+class TeamYearAdmin(HideSidebarMixin, admin.ModelAdmin):
+    model = TeamYear
+    search_fields = ['team__team_num', 'team__competition', 'nickname']
+
+
+class TeamYearInlineAdmin(admin.StackedInline):
     model = TeamYear
     extra = 0
 
@@ -37,16 +42,17 @@ class TeamYearAdmin(PlaceholderAdminMixin, admin.StackedInline):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     inlines = [
-        TeamYearAdmin
+        TeamYearInlineAdmin
     ]
 
 
 class EventPageAdmin(PlaceholderAdminMixin, admin.TabularInline):
     model = EventPage
     extra = 0
+    prepopulated_fields = {"slug": ("title",)}
 
 
-class AwardAdmin(PlaceholderAdminMixin, admin.TabularInline):
+class AwardAdmin(admin.TabularInline):
     model = Award
     extra = 0
 
@@ -57,13 +63,7 @@ class EventAdmin(admin.ModelAdmin):
         EventPageAdmin,
         AwardAdmin
     ]
+    prepopulated_fields = {"slug": ("name",)}
+    autocomplete_fields = ['teams']
 
 
-@admin.register(EventConfig)
-class EventConfigAdmin(HideSidebarMixin, BaseAppHookConfig, admin.ModelAdmin):
-    pass
-
-
-@admin.register(RegularEventConfig)
-class RegularEventConfigAdmin(HideSidebarMixin, BaseAppHookConfig, admin.ModelAdmin):
-    pass

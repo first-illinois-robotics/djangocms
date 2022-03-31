@@ -1,10 +1,7 @@
-from aldryn_apphooks_config.fields import AppHookConfigField
-from aldryn_apphooks_config.managers import AppHookConfigManager
 from cms.models.fields import PlaceholderField
 from django.db import models
-from django.db.models import Q, F
-from .cms_appconfig import EventConfig, RegularEventConfig
 from .competitions import Competition
+from .plugin_models import *
 
 
 class PageLayoutTypes(models.IntegerChoices):
@@ -28,9 +25,15 @@ class Team(models.Model):
             )
         ]
 
+    def __str__(self):
+        return f"{self.competition}{self.team_num}"
+
 
 class GlobalSeason(models.Model):
     name = models.TextField(help_text="Season-wide name, like \"FIRST Forward\"", null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Season(models.Model):
@@ -41,6 +44,8 @@ class Season(models.Model):
     # May not be exactly the year, since seasons span years
     year = models.IntegerField(null=True, help_text="The year as provided by FIRST's own systems. Generally the year "
                                                     "that kickoff is in.")
+
+    name = models.CharField(max_length=100)
 
     # the global season should be set for all the seasons happening at the same time
     # i.e. go to te same championship
@@ -56,6 +61,14 @@ class Season(models.Model):
             )
         ]
 
+    def save(self, *args, **kwargs):
+        if not self.name:
+            self.name = f"{self.competition} {self.year} Season"
+        super(Season, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
 
 class League(models.Model):
     code = models.CharField(help_text="Gotten straight from FIRST", max_length=50)
@@ -68,30 +81,34 @@ class League(models.Model):
 class TeamYear(models.Model):
     team = models.ForeignKey(Team, on_delete=models.PROTECT)
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
-    leagues = models.ManyToManyField(League)
+    leagues = models.ManyToManyField(League, blank=True)
 
-    nickname = models.CharField(max_length=100, null=True)
+    nickname = models.CharField(max_length=100, null=True, blank=True)
     fullname = models.TextField(help_text="Full team name including sponsors")
-    website = models.CharField(null=True, max_length=100)
+    website = models.CharField(null=True, blank=True, max_length=100)
 
     city = models.CharField(blank=True, max_length=100)
     state = models.CharField(blank=True, max_length=100)
     country = models.CharField(blank=True, max_length=100)
-    lat = models.FloatField(null=True)
-    long = models.FloatField(null=True)
+    lat = models.FloatField(null=True, blank=True)
+    long = models.FloatField(null=True, blank=True)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["team", "season"], name="unique_team_year")
         ]
 
+    def __str__(self):
+        return f"{self.team} {self.season.name} Season ({self.nickname})"
+
 
 class RegularEvent(models.Model):
     """For events that happen regularly (i.e. a yearly regional), an easy way of lumping them together"""
     title = models.TextField()
     slug = models.SlugField(help_text="Used in URLs")
-    app_config = AppHookConfigField(RegularEventConfig, null=True)
-    objects = AppHookConfigManager()
+
+    def __str__(self):
+        return f"{self.title} ({self.slug})"
 
 
 class Event(models.Model):
@@ -125,16 +142,18 @@ class Event(models.Model):
         FTC_OffSeason = 110, "FTC Off Season"
 
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
-    league = models.ForeignKey(League, on_delete=models.PROTECT, null=True)
+    league = models.ForeignKey(League, on_delete=models.PROTECT, null=True, blank=True)
+    name = models.CharField(max_length=100, help_text="Do not include the year/season in this, as it will be"
+                                                      "automatically added from the season above.")
 
     slug = models.SlugField(help_text="Used in URLs")
 
     # this is the Official event key per FIRST, without the year
     official_key = models.CharField(help_text="Official event key from FIRST", max_length=20)
     # alternate keys for third party sites
-    es02_key = models.CharField(null=True, max_length=20)
-    tba_key = models.CharField(null=True, max_length=10)
-    toa_key = models.CharField(null=True, max_length=15)
+    es02_key = models.CharField(null=True, blank=True, max_length=20)
+    tba_key = models.CharField(null=True, blank=True, max_length=10)
+    toa_key = models.CharField(null=True, blank=True, max_length=15)
 
     tournamentType = models.IntegerField(choices=TournamentType.choices)
 
@@ -142,14 +161,14 @@ class Event(models.Model):
                                       help_text="Used for a repeating event.")
     start_date = models.DateField()
     end_date = models.DateField()
-    lat = models.FloatField(null=True)
-    long = models.FloatField(null=True)
-    teams = models.ManyToManyField(TeamYear)
+    lat = models.FloatField(null=True, blank=True)
+    long = models.FloatField(null=True, blank=True)
+    teams = models.ManyToManyField(TeamYear, blank=True)
 
-    # Apphook/display stuff
     pageType = models.IntegerField(choices=PageLayoutTypes.choices, default=PageLayoutTypes.Tabbed)
-    app_config = AppHookConfigField(EventConfig, null=True)
-    objects = AppHookConfigManager()
+
+    def __str__(self):
+        return f"{self.name} ({self.season})"
 
 
 class Award(models.Model):
@@ -157,6 +176,9 @@ class Award(models.Model):
     team = models.ForeignKey(TeamYear, on_delete=models.PROTECT)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     individual = models.CharField(null=True, help_text="For individual awards like Dean's List", max_length=100)
+
+    def __str__(self):
+        return f"{self.name} at {self.event}"
 
 
 class EventPage(models.Model):
@@ -174,3 +196,6 @@ class EventPage(models.Model):
         Awards = 2
 
     pageType = models.IntegerField(choices=PageTypes.choices, default=PageTypes.Custom)
+
+    def __str__(self):
+        return self.title
