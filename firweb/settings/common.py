@@ -99,6 +99,8 @@ TEMPLATES = [
 
 MIDDLEWARE = [
     "cms.middleware.utils.ApphookReloadMiddleware",
+    "django.middleware.cache.UpdateCacheMiddleware",
+    "djangocms_redirect.middleware.RedirectMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -129,6 +131,7 @@ INSTALLED_APPS = [
     "sekizai",
     "treebeard",
     "djangocms_text_ckeditor",
+    "djangocms_redirect",
     "filer",
     "easy_thumbnails",
     "haystack",

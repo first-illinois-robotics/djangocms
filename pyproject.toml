@@ -7,7 +7,7 @@ authors = ["FIRST Illinois Robotics <it@firstillinoisrobotics.org>"]
 [tool.poetry.dependencies]
 python = ">=3.9, <4"
 django-cms = ">=3.9,<3.11"
-djangocms-admin-style = "3.1.0"
+djangocms-admin-style = "3.1.1"
 django-treebeard = ">=4.0,<5.0"
 djangocms-text-ckeditor = ">=4.0,<5.1"
 djangocms-link = ">=3.0,<4.0"
@@ -30,11 +30,11 @@ six = "^1.16.0"
 pytz = "^2022.1"
 django-storages = { version = "^1.11.1", extras = ["google"]}
 django-environ = "^0.8"
-google-cloud-secret-manager = "2.9.2"
+google-cloud-secret-manager = "^2.9.2"
 mysqlclient = "^2.1"
-google-cloud-storage = "2.2.1"
-google-cloud-logging = "3.0"
-appengine-python-standard = "1.0.0"
+google-cloud-storage = "^2.2.1"
+google-cloud-logging = "^3.0"
+appengine-python-standard = "^1.0.0"
 # fix for compatability with django 3.2
 aldryn-search = { git = "https://github.com/benzkji/aldryn-search.git", rev = "0a52d4c"  }
 Whoosh = "^2.7.4"
@@ -44,6 +44,7 @@ django-google-tag-manager = "0.0.5"
 django-cors-headers = "3.11"
 aldryn-apphooks-config = "0.6.0" # here until we can squash/optimize migrations 8/9 in events
 django-computedfields = "0.1.7"
+djangocms-redirect = "0.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "22.3"

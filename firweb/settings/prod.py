@@ -82,6 +82,37 @@ SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 GOOGLE_TAG_ID = env.str("GOOGLE_MEASUREMENT_ID", None)
 
+# redefining entire template object so we can enable cached templates
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            os.path.join(BASE_DIR, "firweb", "templates"),
+        ],
+        "OPTIONS": {
+            "context_processors": [
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.template.context_processors.media",
+                "django.template.context_processors.csrf",
+                "django.template.context_processors.tz",
+                "sekizai.context_processors.sekizai",
+                "django.template.context_processors.static",
+                "cms.context_processors.cms_settings",
+                "firweb.context_processors.program",
+            ],
+            "loaders": [
+                ("django.template.loaders.cached.Loader", [
+                    "django.template.loaders.filesystem.Loader",
+                    "django.template.loaders.app_directories.Loader"
+                ])
+            ],
+        },
+    },
+]
+
 if not os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
     CACHES = {
         "default": {
