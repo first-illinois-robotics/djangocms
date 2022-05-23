@@ -1,26 +1,25 @@
-{# TODO: Redo this file with accordions or something that looks much nicer on mobile #}
-
+{% load url_checker %}
 {% spaceless %}
     {% for child in children %}
             {% if child.is_leaf_node %}
-                <a class="list-group-item list-group-item-action{% if child.selected or child.ancestor %} active{% endif %} text-decoration-none text-dark" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" role="menuitem">
-                    {{ child.get_menu_title|safe }}
+                <a class="list-group-item list-group-item-action{% if child.selected or child.ancestor %} active{% endif %} text-decoration-none text-dark" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" {% if child.attr.redirect_url|is_external %}target="_blank"{% endif %} role="menuitem">
+                    {{ child.get_menu_title|safe }} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                 </a>
             {% else %}
                 <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                 data-bs-toggle="collapse" data-bs-target="#navbarAccordion{{ child.get_absolute_url | slugify}}" aria-expanded="false" aria-controls="navbarAccordion{{ child.get_absolute_url | slugify}}">
-                    <span class="text-decoration-none text-dark ">{{ child.get_menu_title|safe}}</span>
+                    <span class="text-decoration-none text-dark ">{{ child.get_menu_title|safe }} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <ul class="list-group collapse link-dropdown-accordion" id="navbarAccordion{{ child.get_absolute_url | slugify}}">
                     {% if child.visible %}
-                        <a class="list-group-item {% if child.selected %} active{% endif %}" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" role="menuitem">
-                            {{ child.get_menu_title|safe}}
+                        <a class="list-group-item {% if child.selected %} active{% endif %}" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" role="menuitem" {% if child.attr.redirect_url|is_external %} target="_blank" {% endif %}>
+                            {{ child.get_menu_title|safe }} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                         </a>
                     {% endif %}
                     {% for grandchild in child.children %}
-                        <a class="list-group-item {% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem">
-                            {{ grandchild.get_menu_title|safe }}
+                        <a class="list-group-item {% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem" {% if grandchild.attr.redirect_url|is_external %} target="_blank" {% endif %}>
+                            {{ grandchild.get_menu_title|safe }} {% if grandchild.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                         </a>
                     {% endfor %}
                 </ul>

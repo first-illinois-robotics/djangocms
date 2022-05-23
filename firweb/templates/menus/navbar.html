@@ -4,7 +4,7 @@
         <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
             {% if child.is_leaf_node %}
                 <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" {% if child.attr.redirect_url|is_external %} target="_blank" {% endif %}>
-                    {{ child.get_menu_title|safe }}
+                    {{ child.get_menu_title|safe }} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                 </a>
             {% else %}
                 <a id="navbarDropdown{{ child.get_absolute_url | slugify}}" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -13,13 +13,13 @@
                 <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown{{ child.get_absolute_url | slugify}}">
                     {% if child.visible %}
                         <a class="dropdown-item" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
-                            {{ child.get_menu_title|safe}}
+                            {{ child.get_menu_title|safe}} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                         </a>
                         <div class="dropdown-divider"></div>
                     {% endif %}
                     {% for grandchild in child.children %}
                         <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" {% if grandchild.attr.redirect_url|is_external %} target="_blank" {% endif %} role="menuitem">
-                            {{ grandchild.get_menu_title|safe }}
+                            {{ grandchild.get_menu_title|safe }} {% if child.attr.redirect_url|is_external %}<i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>{% endif %}
                         </a>
                         {% if not grandchild.is_lead_node %}
 {#                            {% include "menus/grandchild.html" with children=grandchild %}#}
