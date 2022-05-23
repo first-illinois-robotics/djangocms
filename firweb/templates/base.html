@@ -86,7 +86,7 @@
 
         <div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="offcanvasNavbar"
              aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-body p-0">
+            <div class="offcanvas-body p-0" id="offcanvas-parent">
                 <div class="ms-auto nav nav-pills nav-fill flex-row-reverse align-items-center">
                     <div class="d-flex align-items-center ps-1 pe-2">
                         <a type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i
@@ -120,7 +120,7 @@
                                         id="{{ program_name }}-mobile-img">
                             {% if not details.external %}<i class="fas fa-chevron-down mobile-accordion-control {{ program_name }}-mobile-indicator {% if details.current %}rotated{% endif %}"></i>{% endif %}
                         </a>
-                        <div class="collapse overflow-program-header-target {% if details.current %}show{% endif %}" id="{{ program_name }}-mobile">
+                        <div class="collapse overflow-program-header-target {% if details.current %}show{% endif %}" id="{{ program_name }}-mobile" data-bs-parent="#offcanvas-parent">
                             <div class="list-group list-group-flush">
                                 <a class="list-group-item list-group-item-action" href="{% page_url details.url %}">{{ details.full_name }}</a>
                                 {% show_menu_below_id details.url 0 100 100 100 "menus/navbar_offcanvas.html" %}

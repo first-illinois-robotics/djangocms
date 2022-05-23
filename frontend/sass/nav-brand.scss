@@ -19,7 +19,8 @@ $program-colors: (
 
 // mobile overflow
 .brand-opener {
-  background-image: svg("./fir_mobile_open.svg");display: inline-block;
+  background-image: svg("./fir_mobile_open.svg");
+  display: inline-block;
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
@@ -47,6 +48,7 @@ $program-colors: (
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
+    text-decoration: none;
 
     img {
       width: auto;
@@ -69,11 +71,10 @@ $program-colors: (
       margin: 1em;
       flex-shrink: 0;
       transform: rotate(0deg);
-      transition: transform 1s linear;
+      transition: transform 0.25s ease-in-out;
 
       &.rotated {
         transform: rotate(180deg);
-        transition: transform 1s linear;
       }
     }
 
