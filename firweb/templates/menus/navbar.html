@@ -1,8 +1,9 @@
+{% load url_checker %}
 {% spaceless %}
     {% for child in children %}
         <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
             {% if child.is_leaf_node %}
-                <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" {% if child.attr.redirect_url|is_external %} target="_blank" {% endif %}>
                     {{ child.get_menu_title|safe }}
                 </a>
             {% else %}
@@ -17,7 +18,7 @@
                         <div class="dropdown-divider"></div>
                     {% endif %}
                     {% for grandchild in child.children %}
-                        <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem">
+                        <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" {% if grandchild.attr.redirect_url|is_external %} target="_blank" {% endif %} role="menuitem">
                             {{ grandchild.get_menu_title|safe }}
                         </a>
                         {% if not grandchild.is_lead_node %}

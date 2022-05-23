@@ -11,6 +11,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST Illinois Robotics",
             "extra_img_classes": "brand-logo",
             "url": "home",
+            "external": False,
         },
         "flld": {
             "internal_name": "flld",
@@ -19,6 +20,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST LEGO League Discover",
             "extra_img_classes": "fll-logo",
             "url": "fll-discover",
+            "external": True,
         },
         "flle": {
             "internal_name": "flle",
@@ -27,6 +29,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST LEGO League Explore",
             "extra_img_classes": "fll-logo",
             "url": "fll-explore",
+            "external": False,
         },
         "fllc": {
             "internal_name": "fllc",
@@ -35,6 +38,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST LEGO League Challenge",
             "extra_img_classes": "fll-logo",
             "url": "fll-challenge",
+            "external": False,
         },
         "ftc": {
             "internal_name": "ftc",
@@ -43,6 +47,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST Tech Challenge",
             "extra_img_classes": "non-fll-logo",
             "url": "ftc",
+            "external": False,
         },
         "frc": {
             "internal_name": "frc",
@@ -51,6 +56,7 @@ def program(request: HttpRequest):
             "full_name": "FIRST Robotics Competition",
             "extra_img_classes": "non-fll-logo",
             "url": "frc",
+            "external": False,
         },
     }
 

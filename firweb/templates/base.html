@@ -52,8 +52,9 @@
     <div class="container">
         {% spaceless %}
             {% for program_name, details in programs.items %}
-                <a href="{% page_url details.url %}" class="program-nav-box {{ program_name }}-brand"
-                   id="{{ program_name }}-logo">
+                {% page_url details.url as program_url%}
+                <a href="{{ program_url }}" class="program-nav-box {{ program_name }}-brand"
+                   id="{{ program_name }}-logo" {% if details.external %}target="_blank"{% endif %}>
                     <img class="{{ details.extra_img_classes }}" src="{% static details.desktop_img %}"
                          alt="{{ details.full_name }}">
                 </a>
@@ -112,12 +113,12 @@
                 </form>
                 {% for program_name, details in programs.items %}
                     <div class="navbar-nav  {{ program_name }}-brand text-dark" >
-                        <a class="overflow-program-header" data-bs-toggle="collapse" href="#{{ program_name }}-mobile">
+                        <a class="overflow-program-header" {% if details.external %}href="{% page_url details.url  %}" target="_blank"{% else %}data-bs-toggle="collapse" href="#{{ program_name }}-mobile"{% endif %}>
                             <img class="{{ details.extra_img_classes }}"
                                       src="{% static details.mobile_img %}"
                                       alt="{{ details.full_name }}"
                                         id="{{ program_name }}-mobile-img">
-                            <i class="fas fa-chevron-down mobile-accordion-control {{ program_name }}-mobile-indicator {% if details.current %}rotated{% endif %}"></i>
+                            {% if not details.external %}<i class="fas fa-chevron-down mobile-accordion-control {{ program_name }}-mobile-indicator {% if details.current %}rotated{% endif %}"></i>{% endif %}
                         </a>
                         <div class="collapse overflow-program-header-target {% if details.current %}show{% endif %}" id="{{ program_name }}-mobile">
                             <div class="list-group list-group-flush">
