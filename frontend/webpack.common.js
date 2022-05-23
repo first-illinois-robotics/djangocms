@@ -50,10 +50,17 @@ module.exports = {
                 type: "javascript/auto",
             },
             {
-                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                test: /\.(ico|jpg|jpeg|png|gif|otf|webp|)(\?.*)?$/,
                 use: {
                     loader: "raw-loader",
                 },
+            },
+            {
+               test: /\.(svg|eot|woff|woff2|ttf)$/,
+               type: 'asset/resource',
+               generator: {
+                 filename: 'compiled/fonts/[hash][ext][query]'
+               }
             },
         ],
     },
