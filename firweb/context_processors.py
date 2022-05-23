@@ -2,12 +2,11 @@ from django.http import HttpRequest
 
 
 def program(request: HttpRequest):
-    # TODO: Replace all of these with SVGs
     program_info = {
         "home": {
             "internal_name": "home",
-            "desktop_img": "horizontal-4c.png",
-            "mobile_img": "horizontal-4c.png",
+            "desktop_img": "horizontal-4c.svg",
+            "mobile_img": "horizontal-4c.svg",
             "full_name": "FIRST Illinois Robotics",
             "extra_img_classes": "brand-logo",
             "url": "home",
@@ -15,8 +14,8 @@ def program(request: HttpRequest):
         },
         "flld": {
             "internal_name": "flld",
-            "desktop_img": "FLL-RGB_Discover-vert-one-color-reverse.png",
-            "mobile_img": "FLL-RGB_Discover-horiz-one-color-reverse.png",
+            "desktop_img": "FLL-RGB_Discover-vert-one-color-reverse.svg",
+            "mobile_img": "FLL-RGB_Discover-horiz-one-color-reverse.svg",
             "full_name": "FIRST LEGO League Discover",
             "extra_img_classes": "fll-logo",
             "url": "fll-discover",
@@ -24,8 +23,8 @@ def program(request: HttpRequest):
         },
         "flle": {
             "internal_name": "flle",
-            "desktop_img": "FLL-RGB_Explore-vert-one-color-reverse.png",
-            "mobile_img": "FLL-RGB_Explore-horiz-one-color-reverse.png",
+            "desktop_img": "FLL-RGB_Explore-vert-one-color-reverse.svg",
+            "mobile_img": "FLL-RGB_Explore-horiz-one-color-reverse.svg",
             "full_name": "FIRST LEGO League Explore",
             "extra_img_classes": "fll-logo",
             "url": "fll-explore",
@@ -33,8 +32,8 @@ def program(request: HttpRequest):
         },
         "fllc": {
             "internal_name": "fllc",
-            "desktop_img": "FLL-RGB_Challenge-vert-one-color-reverse.png",
-            "mobile_img": "FLL-RGB_Challenge-horiz-one-color-reverse.png",
+            "desktop_img": "FLL-RGB_Challenge-vert-one-color-reverse.svg",
+            "mobile_img": "FLL-RGB_Challenge-horiz-one-color-reverse.svg",
             "full_name": "FIRST LEGO League Challenge",
             "extra_img_classes": "fll-logo",
             "url": "fll-challenge",
@@ -42,7 +41,7 @@ def program(request: HttpRequest):
         },
         "ftc": {
             "internal_name": "ftc",
-            "desktop_img": "FIRSTTech_Type_White.png",
+            "desktop_img": "FIRSTTech_Type_White.svg",
             "mobile_img": "FIRSTTech_iconHorz_OneColor_reverse.svg",
             "full_name": "FIRST Tech Challenge",
             "extra_img_classes": "non-fll-logo",
@@ -51,7 +50,7 @@ def program(request: HttpRequest):
         },
         "frc": {
             "internal_name": "frc",
-            "desktop_img": "FIRSTRobotics_Type_White.png",
+            "desktop_img": "FIRSTRobotics_Type_White.svg",
             "mobile_img": "FIRSTRobotics_iconHorz_OneColor_reverse.svg",
             "full_name": "FIRST Robotics Competition",
             "extra_img_classes": "non-fll-logo",
